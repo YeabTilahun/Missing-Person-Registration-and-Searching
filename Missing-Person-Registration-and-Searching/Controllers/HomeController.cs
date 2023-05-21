@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Missing_Person_Registration_and_Searching.Models;
+﻿using Face_Recognition.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Missing_Person_Registration_and_Searching.Controllers
+namespace Face_Recognition.Controllers
 {
     public class HomeController : Controller
     {
