@@ -1,4 +1,4 @@
-namespace Missing_Person_Registration_and_Searching.Models
+namespace Face_Recognition.Models
 {
     public class ErrorViewModel
     {
