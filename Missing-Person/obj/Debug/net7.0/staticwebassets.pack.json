@@ -5,6 +5,26 @@
       "PackagePath": "staticwebassets\\Missing-Person.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\MissingPerson\\Image\\6b99e07e-6772-4f2a-adc6-0322a5e09641_fade.jpg",
+      "PackagePath": "staticwebassets\\MissingPerson\\Image\\6b99e07e-6772-4f2a-adc6-0322a5e09641_fade.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\MissingPerson\\Image\\7bab0d60-07a1-45f1-96db-3b176105726c_Arteta2.jpg",
+      "PackagePath": "staticwebassets\\MissingPerson\\Image\\7bab0d60-07a1-45f1-96db-3b176105726c_Arteta2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\MissingPerson\\Image\\dbbea7b3-2a9e-49fe-9039-d193719dff62_elon.jpg",
+      "PackagePath": "staticwebassets\\MissingPerson\\Image\\dbbea7b3-2a9e-49fe-9039-d193719dff62_elon.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\MissingPerson\\Image\\e4693f4b-e02e-4f18-853a-f1be4dc6cdbe_Arteta.jpg",
+      "PackagePath": "staticwebassets\\MissingPerson\\Image\\e4693f4b-e02e-4f18-853a-f1be4dc6cdbe_Arteta.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\MissingPerson\\Search\\1bab8d1e-4fc0-4aa1-addf-1996301f3135_Arteta2.jpg",
+      "PackagePath": "staticwebassets\\MissingPerson\\Search\\1bab8d1e-4fc0-4aa1-addf-1996301f3135_Arteta2.jpg"
+    },
+    {
       "Id": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

@@ -1,11 +1,379 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "DlibDotNet/19.21.0.20220724": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "5.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/DlibDotNet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/DlibDotNet.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/centos-x64/native/libDlibDotNetNative.so": {
+            "assetType": "native",
+            "rid": "centos-x64"
+          },
+          "runtimes/centos-x64/native/libDlibDotNetNativeDnn.so": {
+            "assetType": "native",
+            "rid": "centos-x64"
+          },
+          "runtimes/linux-x64/native/libDlibDotNetNative.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/libDlibDotNetNativeDnn.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-x64/native/libDlibDotNetNative.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/osx-x64/native/libDlibDotNetNativeDnn.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-x64/native/DlibDotNetNative.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/DlibDotNetNativeDnn.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/DlibDotNetNative.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/DlibDotNetNativeDnn.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "FaceRecognitionDotNet/1.3.0.7": {
+        "type": "package",
+        "dependencies": {
+          "DlibDotNet": "19.21.0.20220724",
+          "System.Drawing.Common": "5.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/FaceRecognitionDotNet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/FaceRecognitionDotNet.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/FaceRecognitionDotNet.props": {},
+          "build/FaceRecognitionDotNet.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/centos-x64/native/libDlibDotNetNativeDnnAgeClassification.so": {
+            "assetType": "native",
+            "rid": "centos-x64"
+          },
+          "runtimes/centos-x64/native/libDlibDotNetNativeDnnEmotionClassification.so": {
+            "assetType": "native",
+            "rid": "centos-x64"
+          },
+          "runtimes/centos-x64/native/libDlibDotNetNativeDnnGenderClassification.so": {
+            "assetType": "native",
+            "rid": "centos-x64"
+          },
+          "runtimes/linux-x64/native/libDlibDotNetNativeDnnAgeClassification.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/libDlibDotNetNativeDnnEmotionClassification.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/libDlibDotNetNativeDnnGenderClassification.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-x64/native/libDlibDotNetNativeDnnAgeClassification.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/osx-x64/native/libDlibDotNetNativeDnnEmotionClassification.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/osx-x64/native/libDlibDotNetNativeDnnGenderClassification.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-AnyCPU/native/DlibDotNetNativeDnnAgeClassification.dll": {
+            "assetType": "native",
+            "rid": "win-AnyCPU"
+          },
+          "runtimes/win-AnyCPU/native/DlibDotNetNativeDnnEmotionClassification.dll": {
+            "assetType": "native",
+            "rid": "win-AnyCPU"
+          },
+          "runtimes/win-AnyCPU/native/DlibDotNetNativeDnnGenderClassification.dll": {
+            "assetType": "native",
+            "rid": "win-AnyCPU"
+          },
+          "runtimes/win-x64/native/DlibDotNetNativeDnnAgeClassification.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/DlibDotNetNativeDnnEmotionClassification.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/DlibDotNetNativeDnnGenderClassification.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/DlibDotNetNativeDnnAgeClassification.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/DlibDotNetNativeDnnEmotionClassification.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/DlibDotNetNativeDnnGenderClassification.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "Microsoft.Win32.SystemEvents/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/_._": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Drawing.Common/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "5.0.0"
+        },
+        "compile": {
+          "ref/netcoreapp3.0/System.Drawing.Common.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "DlibDotNet/19.21.0.20220724": {
+      "sha512": "fr/NPuJLFFN+aYfQbdUvG/qyH3BLp+fGROoTc979juuiA1hS6Tjr8VfdAWx2sriTtXfvfq6X1KAmP0IOgbEuKA==",
+      "type": "package",
+      "path": "dlibdotnet/19.21.0.20220724",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "build/net45/DlibDotNet.targets",
+        "buildTransitive/net45/DlibDotNet.targets",
+        "dlibdotnet.19.21.0.20220724.nupkg.sha512",
+        "dlibdotnet.nuspec",
+        "images/ml128.png",
+        "lib/netstandard2.0/DlibDotNet.dll",
+        "licenses/dlib.txt",
+        "licenses/giflib.txt",
+        "licenses/libjpeg.txt",
+        "licenses/libpng.txt",
+        "licenses/zlib.txt",
+        "runtimes/centos-x64/native/libDlibDotNetNative.so",
+        "runtimes/centos-x64/native/libDlibDotNetNativeDnn.so",
+        "runtimes/linux-x64/native/libDlibDotNetNative.so",
+        "runtimes/linux-x64/native/libDlibDotNetNativeDnn.so",
+        "runtimes/osx-x64/native/libDlibDotNetNative.dylib",
+        "runtimes/osx-x64/native/libDlibDotNetNativeDnn.dylib",
+        "runtimes/win-x64/native/DlibDotNetNative.dll",
+        "runtimes/win-x64/native/DlibDotNetNativeDnn.dll",
+        "runtimes/win-x86/native/DlibDotNetNative.dll",
+        "runtimes/win-x86/native/DlibDotNetNativeDnn.dll"
+      ]
+    },
+    "FaceRecognitionDotNet/1.3.0.7": {
+      "sha512": "sD5bKKfUg3AUFFh7aVDFCYX2K0aLVYb/09oA/PLxVeZVGfullyCG4z7qfYbEelyXt2aF2L5rzrFRn7MKUePzfg==",
+      "type": "package",
+      "path": "facerecognitiondotnet/1.3.0.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "build/FaceRecognitionDotNet.props",
+        "build/FaceRecognitionDotNet.targets",
+        "facerecognitiondotnet.1.3.0.7.nupkg.sha512",
+        "facerecognitiondotnet.nuspec",
+        "images/face128.png",
+        "lib/net461/FaceRecognitionDotNet.dll",
+        "lib/net461/FaceRecognitionDotNet.xml",
+        "lib/net461/ja/FaceRecognitionDotNet.xml",
+        "lib/netstandard2.0/FaceRecognitionDotNet.dll",
+        "lib/netstandard2.0/FaceRecognitionDotNet.xml",
+        "lib/netstandard2.0/ja/FaceRecognitionDotNet.xml",
+        "runtimes/centos-x64/native/libDlibDotNetNativeDnnAgeClassification.so",
+        "runtimes/centos-x64/native/libDlibDotNetNativeDnnEmotionClassification.so",
+        "runtimes/centos-x64/native/libDlibDotNetNativeDnnGenderClassification.so",
+        "runtimes/linux-x64/native/libDlibDotNetNativeDnnAgeClassification.so",
+        "runtimes/linux-x64/native/libDlibDotNetNativeDnnEmotionClassification.so",
+        "runtimes/linux-x64/native/libDlibDotNetNativeDnnGenderClassification.so",
+        "runtimes/osx-x64/native/libDlibDotNetNativeDnnAgeClassification.dylib",
+        "runtimes/osx-x64/native/libDlibDotNetNativeDnnEmotionClassification.dylib",
+        "runtimes/osx-x64/native/libDlibDotNetNativeDnnGenderClassification.dylib",
+        "runtimes/win-AnyCPU/native/DlibDotNetNativeDnnAgeClassification.dll",
+        "runtimes/win-AnyCPU/native/DlibDotNetNativeDnnEmotionClassification.dll",
+        "runtimes/win-AnyCPU/native/DlibDotNetNativeDnnGenderClassification.dll",
+        "runtimes/win-x64/native/DlibDotNetNativeDnnAgeClassification.dll",
+        "runtimes/win-x64/native/DlibDotNetNativeDnnEmotionClassification.dll",
+        "runtimes/win-x64/native/DlibDotNetNativeDnnGenderClassification.dll",
+        "runtimes/win-x86/native/DlibDotNetNativeDnnAgeClassification.dll",
+        "runtimes/win-x86/native/DlibDotNetNativeDnnEmotionClassification.dll",
+        "runtimes/win-x86/native/DlibDotNetNativeDnnGenderClassification.dll"
+      ]
+    },
+    "Microsoft.NETCore.Platforms/5.0.0": {
+      "sha512": "VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
+        "runtime.json",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Win32.SystemEvents/5.0.0": {
+      "sha512": "Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
+      "type": "package",
+      "path": "microsoft.win32.systemevents/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Win32.SystemEvents.dll",
+        "lib/net461/Microsoft.Win32.SystemEvents.xml",
+        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
+        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
+        "microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+        "microsoft.win32.systemevents.nuspec",
+        "ref/net461/Microsoft.Win32.SystemEvents.dll",
+        "ref/net461/Microsoft.Win32.SystemEvents.xml",
+        "ref/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
+        "ref/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
+        "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll",
+        "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.xml",
+        "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll",
+        "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.xml",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Drawing.Common/5.0.1": {
+      "sha512": "3IN8zWk395Qu+7wnoTbebEjdP3izZBBKAahgWuC0jp9tCgTdUFN6KsrqQl0I3L+ptZD/LvwKjgFp1u+x3+p+DA==",
+      "type": "package",
+      "path": "system.drawing.common/5.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.Drawing.Common.dll",
+        "lib/netcoreapp3.0/System.Drawing.Common.dll",
+        "lib/netcoreapp3.0/System.Drawing.Common.xml",
+        "lib/netstandard2.0/System.Drawing.Common.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net461/System.Drawing.Common.dll",
+        "ref/netcoreapp3.0/System.Drawing.Common.dll",
+        "ref/netcoreapp3.0/System.Drawing.Common.xml",
+        "ref/netstandard2.0/System.Drawing.Common.dll",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll",
+        "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll",
+        "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.xml",
+        "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll",
+        "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll",
+        "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.xml",
+        "system.drawing.common.5.0.1.nupkg.sha512",
+        "system.drawing.common.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "FaceRecognitionDotNet >= 1.3.0.7"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Yeabsira\\.nuget\\packages\\": {},
@@ -50,6 +418,12 @@
     "frameworks": {
       "net7.0": {
         "targetAlias": "net7.0",
+        "dependencies": {
+          "FaceRecognitionDotNet": {
+            "target": "Package",
+            "version": "[1.3.0.7, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
