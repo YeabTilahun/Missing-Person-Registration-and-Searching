@@ -1,7 +1,31 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Missing_Person.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContextPool<MissingPersonDbContext>(options => 
+options.UseSqlServer(builder.Configuration.GetConnectionString("MissingPersonContextConnection")));
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{ 
+options.Password.RequiredLength = 8;
+options.Password.RequiredUniqueChars = 3;
+}).AddEntityFrameworkStores<MissingPersonDbContext>();
+
+//Authorization
+/*
+builder.Services.AddMvc(options =>
+{
+var policy = new AuthorizationPolicyBuilder()
+    .RequireAuthenticatedUser()
+    .Build();
+options.Filters.Add(new AuthorizeFilter(policy));
+}).AddXmlSerializerFormatters();*/
 
 var app = builder.Build();
 
@@ -15,7 +39,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseAuthentication();
 app.UseRouting();
 
 app.UseAuthorization();
