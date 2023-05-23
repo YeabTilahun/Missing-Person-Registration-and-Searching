@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Missing_Person.Models;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace Missing_Person.Models
+namespace Missing_Person.ViewModel
 {
-    public class MissingPerson
+    public class RegisterMissingPersonViewModel
     {
         public int Id { get; set; }
 
@@ -30,7 +31,6 @@ namespace Missing_Person.Models
         public string? Last_Location { get; set; }
 
         [Required]
-        [NotMapped]
         public IFormFileCollection? ImagePath { get; set; }
 
         [Required]
@@ -43,8 +43,5 @@ namespace Missing_Person.Models
 
         public string? Missing_Date { get; set; }
 
-        //Foreign Key
-        public int? User_Id { get; set; }
-        public User? User { get; set; }
     }
 }

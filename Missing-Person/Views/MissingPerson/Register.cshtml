@@ -1,0 +1,90 @@
+﻿@model Missing_Person.ViewModel.RegisterMissingPersonViewModel
+
+@{
+    ViewBag.Title = "Missing Person";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center">Missing Person</h1>
+            <hr />
+            <form method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name">Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DOB">Date of Birth</label>
+                    <input asp-for="DOB" class="form-control" />
+                    <span asp-validation-for="DOB" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Gender">Gender</label>
+                    <input asp-for="Gender" class="form-control" />
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Height">Height</label>
+                    <input asp-for="Height" class="form-control" />
+                    <span asp-validation-for="Height" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Weight">Weight</label>
+                    <input asp-for="Weight" class="form-control" />
+                    <span asp-validation-for="Weight" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Eye_Color">Eye Color</label>
+                    <input asp-for="Eye_Color" class="form-control" />
+                    <span asp-validation-for="Eye_Color" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Hair_Color">Hair Color</label>
+                    <input asp-for="Hair_Color" class="form-control" />
+                    <span asp-validation-for="Hair_Color" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Race">Race</label>
+                    <input asp-for="Race" class="form-control" />
+                    <span asp-validation-for="Race" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Last_Location">Last Location</label>
+                    <input asp-for="Last_Location" class="form-control" />
+                    <span asp-validation-for="Last_Location" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImagePath">Image Path</label>
+                    <input asp-for="ImagePath" type="file" class="form-control-file" />
+                    <span asp-validation-for="ImagePath" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description">Description</label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Contact">Contact</label>
+                    <input asp-for="Contact" class="form-control" />
+                    <span asp-validation-for="Contact" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Status">Status</label>
+                    <input asp-for="Status" class="form-control" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Missing_Date">Missing Date</label>
+                    <input asp-for="Missing_Date" class="form-control" />
+                    <span asp-validation-for="Missing_Date" class="text-danger"></span>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

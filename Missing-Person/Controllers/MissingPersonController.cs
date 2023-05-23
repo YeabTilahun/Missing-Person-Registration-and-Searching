@@ -14,7 +14,11 @@ namespace Missing_Person.Controllers
             _logger = logger;
             this.webHostEnvironment = webHostEnvironment;
         }
-
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
         [HttpGet]
         public ViewResult Create()
         {
