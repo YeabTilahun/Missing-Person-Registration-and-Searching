@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="Repository\" />
+    <Folder Include="Views\UserRoleManager\" />
     <Folder Include="wwwroot\MissingPerson\Image\" />
     <Folder Include="wwwroot\MissingPerson\Search\" />
   </ItemGroup>

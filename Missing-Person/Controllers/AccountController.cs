@@ -25,7 +25,7 @@ namespace Missing_Person.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model,string returnurl)
         {
             if (ModelState.IsValid)
             {
@@ -49,7 +49,14 @@ namespace Missing_Person.Controllers
                 if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    if(!string.IsNullOrEmpty(returnurl) && Url.IsLocalUrl(returnurl))
+                    {
+                        return Redirect(returnurl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
 
                 foreach (var error in result.Errors)

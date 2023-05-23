@@ -20,7 +20,7 @@ namespace Missing_Person.Controllers
 
         public IActionResult Privacy()
         {
-            return View();
+            return View("NotFound");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
