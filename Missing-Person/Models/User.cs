@@ -6,7 +6,7 @@ namespace Missing_Person.Models
 {
     public class User: IdentityUser
     {
-        public int Id { get; set; }
+       // public int Id { get; set; } //its uneccaesary because IdentityUser already has it
         [Required(ErrorMessage ="Please enter your first name")]
         public string? FirstName { get; set; }
         [Required(ErrorMessage = "Please enter your last name")]
@@ -32,7 +32,6 @@ namespace Missing_Person.Models
         [DataType(DataType.Password)]
         [Compare("Password",ErrorMessage="Password and confirmation passworddo not match")]
         public string? ConfirmPassword { get; set; }
-
         public List<MissingPerson>? MissingPersons { get; set; }
         
     }

@@ -6,6 +6,7 @@ using Missing_Person.ViewModel;
 
 namespace Missing_Person.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private readonly UserManager<User> userManager;
@@ -24,8 +25,8 @@ namespace Missing_Person.Controllers
         {
             return View();
         }
-      /*  [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model,string returnurl)
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model,string? returnurl)
         {
             if (ModelState.IsValid)
             {
@@ -67,49 +68,7 @@ namespace Missing_Person.Controllers
             }
 
             return View(model);
-        }*/
-
-
-        //check
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = new User
-                {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Email = model.Email,
-                    UserName = model.Email,
-                    PhoneNumber = model.PhoneNumber,
-                    Address = model.Address,
-                    City = model.City,
-                    Country = model.Country,
-                    // ProfileImagePath = model.ProfileImagePath,
-                    Password = model.Password,
-                    ConfirmPassword = model.ConfirmPassword
-                };
-
-                var result = await signInManager.UserManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
-                {
-                    await signInManager.SignInAsync(user, isPersistent: false);
-                   
-                        return RedirectToAction("Index", "Home");
-                }
-
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-
-            }
-
-            return View(model);
         }
-        //check
 
         [HttpGet]
         public IActionResult Login()
@@ -118,7 +77,7 @@ namespace Missing_Person.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model, string? returnurl)
         {
             if (ModelState.IsValid)
             {
@@ -127,7 +86,14 @@ namespace Missing_Person.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("index", "home");
+                    if (!string.IsNullOrEmpty(returnurl) && Url.IsLocalUrl(returnurl))
+                    {
+                        return Redirect(returnurl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
@@ -136,7 +102,7 @@ namespace Missing_Person.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
