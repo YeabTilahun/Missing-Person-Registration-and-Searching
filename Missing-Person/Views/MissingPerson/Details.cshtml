@@ -1,0 +1,34 @@
+﻿@model Missing_Person.ViewModel.DisplayAllViewModel
+
+@{
+    ViewBag.Title = "Missing Person Details";
+}
+
+<h4>Missing Person Details</h4>
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="~/@Model.MissingPerson.ImageUrl" class="card-img" alt="Missing Person Image" sizes="150px">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">@Model.MissingPerson.Name</h5>
+                <p class="card-text"><strong>Date of Birth:</strong> @Model.MissingPerson.DOB</p>
+                <p class="card-text"><strong>Gender:</strong> @Model.MissingPerson.Gender</p>
+                <p class="card-text"><strong>Height:</strong> @Model.MissingPerson.Height</p>
+                <p class="card-text"><strong>Weight:</strong> @Model.MissingPerson.Weight</p>
+                <p class="card-text"><strong>Eye Color:</strong> @Model.MissingPerson.Eye_Color</p>
+                <p class="card-text"><strong>Hair Color:</strong> @Model.MissingPerson.Hair_Color</p>
+                <p class="card-text"><strong>Race:</strong> @Model.MissingPerson.Race</p>
+                <p class="card-text"><strong>Last Location:</strong> @Model.MissingPerson.Last_Location</p>
+                <p class="card-text"><strong>Description:</strong> @Model.MissingPerson.Description</p>
+                <p class="card-text"><strong>Contact:</strong> @Model.MissingPerson.Contact</p>
+                <p class="card-text"><strong>Status:</strong> @Model.MissingPerson.Status</p>
+                <p class="card-text"><strong>Missing Date:</strong> @Model.MissingPerson.Missing_Date</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="@Url.Action("DisplayAll", "MissingPerson")" class="btn btn-primary">Back to List</a>

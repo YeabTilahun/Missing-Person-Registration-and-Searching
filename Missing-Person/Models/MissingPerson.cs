@@ -8,7 +8,8 @@ namespace Missing_Person.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50, MinimumLength = 7)]
+        [StringLength(50, MinimumLength = 7, ErrorMessage = "Please enter your full name")]
+        [Display(Name = "Full Name")]
         public string? Name { get; set; }
 
         [Required]
@@ -31,8 +32,9 @@ namespace Missing_Person.Models
 
         [Required]
         [NotMapped]
-        public IFormFileCollection? ImagePath { get; set; }
+        public IFormFile? ImagePath { get; set; }
 
+        public string? ImageUrl { get; set; }
         [Required]
         public string? Description { get; set; }
 
@@ -44,7 +46,7 @@ namespace Missing_Person.Models
         public string? Missing_Date { get; set; }
 
         //Foreign Key
-        public int? User_Id { get; set; }
+        public string? User_Id { get; set; }
         public User? User { get; set; }
     }
 }

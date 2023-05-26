@@ -9,7 +9,8 @@ namespace Missing_Person.ViewModel
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50, MinimumLength = 7)]
+        [StringLength(50, MinimumLength = 7, ErrorMessage ="Please enter your full name")]
+        [Display(Name = "Full Name")]
         public string? Name { get; set; }
 
         [Required]

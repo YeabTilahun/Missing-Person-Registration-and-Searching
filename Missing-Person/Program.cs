@@ -3,12 +3,16 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Missing_Person.Controllers;
 using Missing_Person.Models;
+using Missing_Person.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Services for identity and database
 builder.Services.AddDbContextPool<MissingPersonDbContext>(options => 
 options.UseSqlServer(builder.Configuration.GetConnectionString("MissingPersonContextConnection")));
 builder.Services.AddIdentity<User, IdentityRole>(options =>
@@ -17,15 +21,9 @@ options.Password.RequiredLength = 8;
 options.Password.RequiredUniqueChars = 3;
 }).AddEntityFrameworkStores<MissingPersonDbContext>();
 
-//Authorization
-/*
-builder.Services.AddMvc(options =>
-{
-var policy = new AuthorizationPolicyBuilder()
-    .RequireAuthenticatedUser()
-    .Build();
-options.Filters.Add(new AuthorizeFilter(policy));
-}).AddXmlSerializerFormatters();*/
+//dependency injection
+builder.Services.AddScoped<IMissingPersonRepository, MissingPersonRepository>();
+
 
 var app = builder.Build();
 

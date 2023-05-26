@@ -1008,6 +1008,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\MissingPerson\Image\7bab0d60-07a1-45f1-96db-3b176105726c_Arteta2.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\MissingPerson\Image\9c576a7c-2232-4d2e-9bc9-2a5d6785c3e2_surafel.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Missing-Person</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Missing-Person</BasePath>
+      <RelativePath>MissingPerson/Image/9c576a7c-2232-4d2e-9bc9-2a5d6785c3e2_surafel.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\MissingPerson\Image\9c576a7c-2232-4d2e-9bc9-2a5d6785c3e2_surafel.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\MissingPerson\Image\dbbea7b3-2a9e-49fe-9039-d193719dff62_elon.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Missing-Person</SourceId>
@@ -1040,12 +1056,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\MissingPerson\Image\e4693f4b-e02e-4f18-853a-f1be4dc6cdbe_Arteta.jpg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\MissingPerson\Search\ac5b5462-a9a4-426a-8f52-f1618b36d5d1_Arteta2.jpg))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\MissingPerson\Search\eff4c222-9b63-4b11-87cd-94e246ba8ed0_surafel.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Missing-Person</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Missing-Person</BasePath>
-      <RelativePath>MissingPerson/Search/ac5b5462-a9a4-426a-8f52-f1618b36d5d1_Arteta2.jpg</RelativePath>
+      <RelativePath>MissingPerson/Search/eff4c222-9b63-4b11-87cd-94e246ba8ed0_surafel.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -1054,7 +1070,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\MissingPerson\Search\ac5b5462-a9a4-426a-8f52-f1618b36d5d1_Arteta2.jpg))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\MissingPerson\Search\eff4c222-9b63-4b11-87cd-94e246ba8ed0_surafel.jpg))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

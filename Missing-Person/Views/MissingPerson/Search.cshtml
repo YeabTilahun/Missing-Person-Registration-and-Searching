@@ -1,0 +1,24 @@
+﻿@model Missing_Person.ViewModel.DisplayAllViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<h3>Search Result</h3>
+
+<div class="row">
+    @foreach (var missingPerson in Model.MissingPeople)
+    {
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="~/@missingPerson.ImageUrl" class="card-img-top" alt="Missing Person Image" sizes="150px">
+                <div class="card-body">
+                    <h5 class="card-title">@missingPerson.Name</h5>
+                    <p class="card-text">@missingPerson.Description</p>
+                    <a href="@Url.Action("Details", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-primary">See Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

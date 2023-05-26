@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Missing_Person.Models;
 
@@ -11,9 +12,11 @@ using Missing_Person.Models;
 namespace Missing_Person.Migrations
 {
     [DbContext(typeof(MissingPersonDbContext))]
-    partial class MissingPersonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230526112208_second")]
+    partial class second
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -263,6 +266,7 @@ namespace Missing_Person.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Last_Location")
@@ -286,8 +290,8 @@ namespace Missing_Person.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("User_Id")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("User_Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("Weight")
                         .HasColumnType("nvarchar(max)");

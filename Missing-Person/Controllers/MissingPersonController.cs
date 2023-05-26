@@ -1,60 +1,109 @@
 ﻿using FaceRecognitionDotNet;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Missing_Person.Models;
+using Missing_Person.Repository;
+using Missing_Person.ViewModel;
 
 namespace Missing_Person.Controllers
 {
     public class MissingPersonController : Controller
     {
-        private readonly ILogger<MissingPersonController> _logger;
         private readonly IWebHostEnvironment webHostEnvironment;
-
-        public MissingPersonController(ILogger<MissingPersonController> logger, IWebHostEnvironment webHostEnvironment)
+        private readonly IMissingPersonRepository imissingPersonRepository;
+        private readonly UserManager<User> userManager;
+        public MissingPersonController(IMissingPersonRepository imissingPersonRepository, UserManager<User> userManager, IWebHostEnvironment webHostEnvironment)
         {
-            _logger = logger;
+            this.userManager = userManager;
+            this.imissingPersonRepository = imissingPersonRepository;
             this.webHostEnvironment = webHostEnvironment;
         }
+
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
-        [HttpGet]
-        public ViewResult Create()
+
+        [HttpPost]
+        public IActionResult Register(MissingPerson missingPerson)
         {
+            if (ModelState.IsValid)
+            {
+                string imgPath = @"MissingPerson\Image\" + Guid.NewGuid().ToString() + "_" + missingPerson.ImagePath.FileName;
+                string serverPath = Path.Combine(webHostEnvironment.WebRootPath, imgPath);
+                missingPerson.ImagePath.CopyTo(new FileStream(serverPath, FileMode.Create));
+                missingPerson.ImageUrl = imgPath;
+                //get the user id who registered the missing person
+                missingPerson.User_Id = userManager.GetUserId(HttpContext.User);
+                missingPerson.Status = "Not Found";
+                MissingPerson newMissingPerson = imissingPersonRepository.AddMissingPerson(missingPerson);
+                return RedirectToAction("Details", new { id = newMissingPerson.Id });
+            }
             return View();
         }
+
+
+        [HttpGet]
+        public ViewResult DisplayAll()
+        {
+            var model = imissingPersonRepository.GetMissingPeople();
+            var displayAllViewModel = new DisplayAllViewModel
+            {
+                MissingPeople = model
+            };
+            return View(displayAllViewModel);
+        }
+        [HttpGet]
+        public ViewResult Details(int id)
+        {
+            MissingPerson missingPerson = imissingPersonRepository.GetMissingPerson(id);
+            if (missingPerson == null)
+            {
+                Response.StatusCode = 404;
+                return View("NotFound");
+            }
+            var displayAllViewModel = new DisplayAllViewModel()
+            {
+                MissingPerson = missingPerson,
+            };
+            return View(displayAllViewModel);
+        }
+        [HttpGet]
+
         [HttpPost]
-        public IActionResult Create(MissingPerson mp)
+        public IActionResult Search(MissingPerson? mp,string? name)
         {
             if (mp.ImagePath != null)
             {
-                List<string> imgPaths = new List<string>();
+                string imgPaths = "";
                 List<string> result = new List<string>();
-                string imgPath = "";
-                string path = "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot";
-                string path2 = "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\";
-                foreach (var file in mp.ImagePath)
-                {
-                    imgPath = @"MissingPerson\Search\" + Guid.NewGuid().ToString() + "_" + file.FileName;
-                    string serverPath = Path.Combine(webHostEnvironment.WebRootPath, imgPath);
-                    file.CopyTo(new FileStream(serverPath, FileMode.Create));
-                    imgPaths.Add(path + imgPath);
-                }
+                string path = "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\";
 
+                //save the image provided by the user in the folder Search
+                string imgPath = @"MissingPerson\Search\" + Guid.NewGuid().ToString() + "_" + mp.ImagePath.FileName;
+                string serverPath = Path.Combine(webHostEnvironment.WebRootPath, imgPath);
+                mp.ImagePath.CopyTo(new FileStream(serverPath, FileMode.Create));
+                imgPaths= imgPath;
+
+                //get all the files in the folder Image
                 var imagesPath = Path.Combine(webHostEnvironment.WebRootPath, "MissingPerson", "Image");
+                //get all the files in the folder with the extension .jpg
                 var imageFiles = Directory.GetFiles(imagesPath, "*.jpg", SearchOption.AllDirectories);
-
-                var imagePaths = imageFiles.Select(file => Path.Combine("/", file.Replace(webHostEnvironment.WebRootPath, "")));//.Replace("\\", "\\"))).ToList();
-
+                //remove the webroot path from the image path and replace the \ with / (from relative to absolute file path)
+                var imagePaths = imageFiles.Select(file => Path.Combine("/", file.Replace(webHostEnvironment.WebRootPath, "")));
+                
                 try
                 {
-                    string currentDirectory = "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\models1";
+                    //create a face recognition object and load the model from the folder models1 
+                    string currentDirectory = "models1";
                     FaceRecognition fr = FaceRecognition.Create(currentDirectory);
 
-                    string img = path2 + imgPath;
-                    var dlibToComBuf = FaceRecognition.LoadImageFile(img);
-                    var enToCompare = fr.FaceEncodings(dlibToComBuf).First();
+                    //concatenate the path of the image to the path of the folder
+                    string img = path + imgPaths;
+
+                    var FirstImageLoaded = FaceRecognition.LoadImageFile(img);
+                    var FirstImageEncoded = fr.FaceEncodings(FirstImageLoaded).First();
 
                     List<string> imagesToCompare = new List<string>();
                     foreach (var imageFile in imageFiles)
@@ -64,29 +113,36 @@ namespace Missing_Person.Controllers
 
                     foreach (var imagePath in imagesToCompare)
                     {
-                        var dlibToComBuf2 = FaceRecognition.LoadImageFile(imagePath);
-                        var enToCompare2 = fr.FaceEncodings(dlibToComBuf2).FirstOrDefault();
+                        var ImageFromDbLoaded = FaceRecognition.LoadImageFile(imagePath);
+                        var ImageFromDbEncoded = fr.FaceEncodings(ImageFromDbLoaded).FirstOrDefault();
 
-                        if (enToCompare2 != null)
+                        if (ImageFromDbEncoded != null)
                         {
-                            bool check = FaceRecognition.CompareFace(enToCompare, enToCompare2);
+                            bool check = FaceRecognition.CompareFace(FirstImageEncoded, ImageFromDbEncoded);
                             if (check != false)
                             {
-                                result.Add("True");
+                                result.Add(Path.Combine("/", imagePath.Replace(webHostEnvironment.WebRootPath, "")));
                             }
                         }
                         else
                         {
                             //means the image is not encoded properly
-                            result.Add("Not the right type of image");
+                            result.Add(imagePath + "Not the right type of image");
                         }
 
                     }
-
+                    List<string> Imgurls = new List<string>();
                     foreach (var x in result)
                     {
-                        Console.WriteLine(x);
+                        //removing unessary characters from the path
+                        Imgurls.Add(x.Substring(1));
                     }
+                    List<MissingPerson> missingPerson = imissingPersonRepository.GetMissingPersonByImage(Imgurls);
+                    var displayAllViewModel = new DisplayAllViewModel()
+                    {
+                        MissingPeople = missingPerson,
+                    };
+                    return View(displayAllViewModel);
 
                 }
                 catch (Exception e123)
@@ -94,6 +150,22 @@ namespace Missing_Person.Controllers
                     Console.WriteLine(e123);
                 }
 
+            }
+            else if(name != null)
+            {
+                List<MissingPerson> missingPerson = imissingPersonRepository.SearchByName(name);
+                if (missingPerson != null)
+                {
+                    var displayAllViewModel = new DisplayAllViewModel()
+                    {
+                        MissingPeople = missingPerson,
+                    };
+                    return View(displayAllViewModel);
+                }
+                else
+                {
+                    return View("NotFound");
+                }
             }
             return RedirectToAction("Index", "Home");
         }
