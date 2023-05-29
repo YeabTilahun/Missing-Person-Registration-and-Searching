@@ -1,0 +1,22 @@
+﻿@model Missing_Person.ViewModel.DisplayAllUser
+
+@{
+    Layout = "_Layout";
+}
+
+<h3>Missing People</h3>
+
+<div class="row">
+    @foreach (var user in Model.users)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">@user.FirstName @user.LastName</h5>
+                    <p class="card-text" style="font-size : 17px ">@user.UserName</p>
+                    <a href="@Url.Action("Detail", "User", new { id = user.Id })" class="btn btn-primary">See Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

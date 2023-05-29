@@ -23,7 +23,7 @@ options.Password.RequiredUniqueChars = 3;
 
 //dependency injection
 builder.Services.AddScoped<IMissingPersonRepository, MissingPersonRepository>();
-
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 

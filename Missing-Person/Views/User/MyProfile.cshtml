@@ -1,0 +1,35 @@
+﻿@model Missing_Person.ViewModel.DisplayAllUser
+
+@{
+    ViewBag.Title = "User Details";
+}
+
+<h1>User Details</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="row">
+                <dt class="col-sm-3">First Name:</dt>
+                <dd class="col-sm-9">@Model.user.FirstName</dd>
+
+                <dt class="col-sm-3">Last Name:</dt>
+                <dd class="col-sm-9">@Model.user.LastName</dd>
+
+                <dt class="col-sm-3">Email:</dt>
+                <dd class="col-sm-9">@Model.user.UserName</dd>
+
+                <dt class="col-sm-3">Address:</dt>
+                <dd class="col-sm-9">@Model.user.Address</dd>
+
+                <dt class="col-sm-3">City:</dt>
+                <dd class="col-sm-9">@Model.user.City</dd>
+
+                <dt class="col-sm-3">Country:</dt>
+                <dd class="col-sm-9">@Model.user.Country</dd>
+            </dl>
+
+            <a href="@Url.Action("Edit", "User", new { id = Model.user.Id })" class="btn btn-primary">Edit</a>
+        </div>
+    </div>
+</div>
