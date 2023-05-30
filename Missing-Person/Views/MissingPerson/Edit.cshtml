@@ -1,0 +1,91 @@
+﻿@model Missing_Person.ViewModel.DisplayAllViewModel
+
+@{
+    Layout = "_Layout";
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center">Missing Person</h1>
+            <hr />
+            <form method="post" enctype="multipart/form-data" asp-action="Edit" asp-controller="MissingPerson">
+                <input type="hidden" asp-for="@Model.MissingPerson.Id" />
+                <input type="hidden" asp-for="@Model.MissingPerson.User_Id" />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.Name">Name</label>
+                    <input asp-for="@Model.MissingPerson.Name" class="form-control" />
+                    <span asp-validation-for="@Model.MissingPerson.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.DOB">DOB</label>
+                    <input asp-for="@Model.MissingPerson.DOB" class="form-control" />
+                    <span asp-validation-for="@Model.MissingPerson.DOB" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.Gender">Gender</label>
+                    <input asp-for="@Model.MissingPerson.Gender" class="form-control" />
+                    <span asp-validation-for="@Model.MissingPerson.Gender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.Height">Height</label>
+                    <input asp-for="@Model.MissingPerson.Height" class="form-control" />
+                    <span asp-validation-for="@Model.MissingPerson.Height" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.Weight">Weight</label>
+                    <input asp-for="@Model.MissingPerson.Weight" class="form-control" />
+                    <span asp-validation-for="@Model.MissingPerson.Weight" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.Eye_Color">Eye Color</label>
+                    <input asp-for="@Model.MissingPerson.Eye_Color" class="form-control" />
+                    <span asp-validation-for="@Model.MissingPerson.Eye_Color" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.Hair_Color">Hair Color</label>
+                    <input asp-for="@Model.MissingPerson.Hair_Color" class="form-control" />
+                    <span asp-validation-for="@Model.MissingPerson.Hair_Color" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.Race">Race</label>
+                    <input asp-for="@Model.MissingPerson.Race" class="form-control" />
+                    <span asp-validation-for="@Model.MissingPerson.Race" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.Last_Location">Last Location</label>
+                    <input asp-for="@Model.MissingPerson.Last_Location" class="form-control" />
+                    <span asp-validation-for="@Model.MissingPerson.Last_Location" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.ImagePath">ImagePath</label>
+                    <input asp-for="@Model.MissingPerson.ImagePath" type="file" class="form-control-file" />
+                    <span asp-validation-for="@Model.MissingPerson.ImagePath" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.Description">Description</label>
+                    <textarea asp-for="@Model.MissingPerson.Description" class="form-control"></textarea>
+                    <span asp-validation-for="@Model.MissingPerson.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.Contact">Contact</label>
+                    <input asp-for="@Model.MissingPerson.Contact" class="form-control" />
+                    <span asp-validation-for="@Model.MissingPerson.Contact" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.Status">Status</label>
+                    <input asp-for="@Model.MissingPerson.Status" class="form-control" />
+                    <span asp-validation-for="@Model.MissingPerson.Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MissingPerson.Missing_Date">Missing Date</label>
+                    <input asp-for="@Model.MissingPerson.Missing_Date" class="form-control" />
+                    <span asp-validation-for="@Model.MissingPerson.Missing_Date" class="text-danger"></span>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

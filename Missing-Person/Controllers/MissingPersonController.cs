@@ -1,4 +1,5 @@
 ﻿using FaceRecognitionDotNet;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Missing_Person.Models;
@@ -7,6 +8,7 @@ using Missing_Person.ViewModel;
 
 namespace Missing_Person.Controllers
 {
+    [Authorize]
     public class MissingPersonController : Controller
     {
         private readonly IWebHostEnvironment webHostEnvironment;
@@ -24,7 +26,50 @@ namespace Missing_Person.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult MyPost()
+        {
+            string userId = userManager.GetUserId(HttpContext.User);
+            List<MissingPerson> missingPerson = imissingPersonRepository.GetMissingPersonByUserId(userId);
+            var displayAllViewModel = new DisplayAllViewModel
+            {
+                MissingPeople = missingPerson
+            };
+            return View(displayAllViewModel);
+        }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            MissingPerson missingPerson = imissingPersonRepository.GetMissingPerson(id);
+            if (missingPerson == null)
+            {
+                Response.StatusCode = 404;
+                return View("NotFound");
+            }
+            var displayAllViewModel = new DisplayAllViewModel
+            {
+                MissingPerson = missingPerson
+            };
+            return View(displayAllViewModel);
+        }
+        [HttpPost]
+        public IActionResult Edit(MissingPerson missingPerson)
+        {
+            
+            //for the image
+            string imgPath = @"MissingPerson\Image\" + Guid.NewGuid().ToString() + "_" + missingPerson.ImagePath.FileName;
+            string serverPath = Path.Combine(webHostEnvironment.WebRootPath, imgPath);
+            missingPerson.ImagePath.CopyTo(new FileStream(serverPath, FileMode.Create));
+            missingPerson.ImageUrl = imgPath;
 
+            MissingPerson updatedMissingPerson = imissingPersonRepository.UpdateMissingPerson(missingPerson);
+
+            var displayAllViewModel = new DisplayAllViewModel
+                {
+                    MissingPerson = updatedMissingPerson
+                };
+                return RedirectToAction("Details", new { id = displayAllViewModel.MissingPerson.Id });
+        }
         [HttpPost]
         public IActionResult Register(MissingPerson missingPerson)
         {
@@ -43,7 +88,7 @@ namespace Missing_Person.Controllers
             return View();
         }
 
-
+        [AllowAnonymous]
         [HttpGet]
         public ViewResult DisplayAll()
         {
@@ -54,6 +99,7 @@ namespace Missing_Person.Controllers
             };
             return View(displayAllViewModel);
         }
+        [AllowAnonymous]
         [HttpGet]
         public ViewResult Details(int id)
         {
@@ -69,8 +115,8 @@ namespace Missing_Person.Controllers
             };
             return View(displayAllViewModel);
         }
-        [HttpGet]
 
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Search(MissingPerson? mp,string? name)
         {

@@ -1,0 +1,34 @@
+﻿@model Missing_Person.ViewModel.DisplayAllViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<h3>Missing People</h3>
+
+<div class="row">
+    @if (Model.MissingPeople == null)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="display-4"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Ffreepng%2Fempty-box-icon-for-your-project_4863429.html&psig=AOvVaw3BONRvahhPxf4QgloXWIVM&ust=1685555086299000&source=images&cd=vfe&ved=0CA4QjRxqFwoTCMiH9p7Mnf8CFQAAAAAdAAAAABAD"></img></h1>
+                    <p class="lead">No data found</p>
+                </div>
+            </div>
+        </div>
+    }
+    @foreach (var missingPerson in Model.MissingPeople)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="~/@missingPerson.ImageUrl" class="card-img-top" alt="Missing Person Image" sizes="150px">
+                <div class="card-body">
+                    <h5 class="card-title">@missingPerson.Name</h5>
+                    <p class="card-text">@missingPerson.Description</p>
+                    <a href="@Url.Action("Edit", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-primary">Edit</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -60,5 +60,19 @@ namespace Missing_Person.Repository
             context.SaveChanges();
             return missingPerson;
         }
+       /* public MissingPerson UpdateMissingPersonStatus(int id, string status)
+        {
+            MissingPerson missingPerson = context.MissingPersons.Find(id);
+            if (missingPerson != null)
+            {
+                missingPerson.Status = status;
+                context.SaveChanges();
+            }
+            return missingPerson;
+        }*/
+        public List<MissingPerson> GetMissingPersonByUserId(string userId)
+        {
+            return context.MissingPersons.Where(e => e.User_Id == userId).ToList();
+        }
     }
 }

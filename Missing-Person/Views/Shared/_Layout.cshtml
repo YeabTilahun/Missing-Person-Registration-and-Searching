@@ -30,7 +30,13 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <span class="nav-link text-dark">@User.Identity.Name!</span>
+                                <span class="nav-link text-dark">@User.Identity.Name</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="MissingPerson" asp-action="Register">Register-MP</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="MissingPerson" asp-action="MyPost">My Post</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="MyProfile">Profile</a>
@@ -70,3 +76,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
