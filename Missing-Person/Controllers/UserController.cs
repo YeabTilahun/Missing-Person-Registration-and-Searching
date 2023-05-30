@@ -56,25 +56,56 @@ namespace Missing_Person.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(string id)
+        public async Task<IActionResult> Edit(string id)
         {
-            var model = iuserRepository.GetUserById(id);
-            if (model == null)
+            var user = await userManager.FindByIdAsync(id);
+
+            if (user == null)
             {
+                ViewBag.ErrorMessage = $"User with Id = {id} cannot be found";
                 return View("NotFound");
             }
-            var displayAllUser = new DisplayAllUser
-            {
-                user = model
-            };
-            return View(displayAllUser); 
-        }
 
+            EditUserViewModel model = new EditUserViewModel
+            {
+               users = user,
+            };
+
+            return View(model);
+        }
         [HttpPost]
-        public IActionResult Edit(User user)
+        public async Task<IActionResult> Edit(EditUserViewModel model)
         {
-           var model = iuserRepository.UpdateUser(user);
-            return RedirectToAction("MyProfile");
+            var user = await userManager.FindByIdAsync(userManager.GetUserId(HttpContext.User));
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User with Id = {model.users.Id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                user.FirstName = model.users.FirstName;
+                user.LastName = model.users.LastName;
+                user.Email = model.users.Email;
+                user.City = model.users.City;
+                user.Country = model.users.Country;
+
+
+                var result = await userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("MyProfile");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View(model);
+            }
         }
 
         [HttpGet]

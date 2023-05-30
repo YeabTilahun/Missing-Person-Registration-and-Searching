@@ -1,4 +1,5 @@
-﻿using Missing_Person.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Missing_Person.Models;
 
 namespace Missing_Person.Repository
 {
@@ -9,7 +10,8 @@ namespace Missing_Person.Repository
         {
             this.context = context;
         }
-        public User DeleteUser(string id)
+
+     /*   public User DeleteUser(string id)
         {
             User user = context.Users.Find(id);
             if (user != null)
@@ -18,7 +20,7 @@ namespace Missing_Person.Repository
                 context.SaveChanges();
             }
             return user;
-        }
+        }*/
 
         public List<User> GetAllUser()
         {
@@ -27,15 +29,8 @@ namespace Missing_Person.Repository
 
         public User GetUserById(string id)
         {
-            return context.Users.Find(id);
-        }
+            return context.Users.FirstOrDefault(u => u.Id.Equals(id));
+        }  
 
-        public User UpdateUser(User user)
-        {
-            var userUpdate = context.Users.Attach(user);
-            userUpdate.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            context.SaveChanges();
-            return user;
-        }
     }
 }

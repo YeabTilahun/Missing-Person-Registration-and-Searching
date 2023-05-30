@@ -6,7 +6,5 @@ namespace Missing_Person.Repository
     {
         public List<User> GetAllUser();
         public User GetUserById(string id);
-        public User UpdateUser(User user);
-        public User DeleteUser(string id);
     }
 }
