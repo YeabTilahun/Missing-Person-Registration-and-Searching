@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> userManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,6 +9,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Missing_Person.styles.css" asp-append-version="true" />
+
+
 </head>
 <body>
     <header>
@@ -29,21 +33,41 @@
                     <ul class="navbar-nav">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                                <span class="nav-link text-dark">@User.Identity.Name</span>
+                            var user = await userManager.GetUserAsync(User);
+                            var role = await userManager.GetRolesAsync(user);
+                            @if (role.Contains("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Statistical Data</a>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-dark" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Dashboard
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                                        <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="DisplayAll">List all Users</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="MissingPerson" asp-action="DisplayAll">List all Missing People</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="UserRoleManager" asp-action="CreateRole">Add Role</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="UserRoleManager" asp-action="ListRole">List Role</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="UserRoleManager" asp-action="EditUsersInRole">Assign Role</a>
+                                    </div>
+                                </li>
+                            }
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @User.Identity.Name
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="MissingPerson" asp-action="Register">Register-MP</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="MissingPerson" asp-action="MyPost">My Post</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="MyProfile">Profile</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="MissingPerson" asp-action="Register">Register-MP</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="MissingPerson" asp-action="MyPost">My Post</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="MyProfile">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-                            </li>
+
+
                         }
                         else
                         {
@@ -76,4 +100,16 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+        var dropdownMenus = document.querySelectorAll(".dropdown-menu");
+
+        dropdownToggles.forEach(function (toggle, index) {
+            toggle.addEventListener("click", function () {
+                dropdownMenus[index].classList.toggle("show");
+            });
+        });
+    });
+</script>
 

@@ -40,6 +40,7 @@ namespace Missing_Person.Controllers
             };
             return View(displayAllUser);
         }
+
         [HttpGet]
         public IActionResult DisplayAll()
         {
