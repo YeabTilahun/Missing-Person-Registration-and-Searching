@@ -1,0 +1,213 @@
+﻿@{
+    ViewData["Title"] = "Statistic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="user-statistics">
+    <h2 class="display-4">Statistics</h2> 
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">User Growth Over Time</h5>
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">User Demographics</h5>
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">User Activity Metrics</h5>
+                    <canvas id="activityChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">User Retention Rate</h5>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h2 class="card-value">75%</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 small">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Active Users vs. Inactive Users</h5>
+                    <canvas id="activeInactiveChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<div class="user-statistics">
+    <h2>User Statistics</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Registered Users</h5>
+                    <h2 class="card-value">1,234</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Active Users vs. Inactive Users</h5>
+                    <canvas id="activeInactiveChart2"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Registered Users</h5>
+                    <h2 class="card-value">1,234</h2>
+                </div>
+            </div>
+        </div>
+     Other sections for different user statistics -->
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+    var activeInactiveChart = new Chart(document.getElementById('activeInactiveChart'), {
+        type: 'pie',
+        data: {
+            labels: ['Active Users', 'Inactive Users'],
+            datasets: [{
+                data: [75, 25], // Sample data, replace with your actual data
+                backgroundColor: ['#007bff', '#ced4da'], // Customize the colors
+                borderWidth: 0
+            }]
+        },
+        options: {
+            // Add chart options and customization here
+            responsive: true,
+            legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                    fontColor: '#333',
+                    fontSize: 12,
+                    padding: 10
+                }
+            }
+        }
+    });
+
+    // Line Chart
+    var lineChart = new Chart(document.getElementById('lineChart'), {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'User Growth',
+                data: [100, 200, 300, 400, 500, 600], // Sample data, replace with your actual data
+                borderColor: '#007bff', // Customize the line color
+                backgroundColor: 'rgba(0, 123, 255, 0.1)', // Customize the area fill color
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    grid: {
+                        color: '#f3f3f3'
+                    }
+                }
+            }
+        }
+    });
+
+    // Bar Chart
+    var barChart = new Chart(document.getElementById('barChart'), {
+        type: 'bar',
+        data: {
+            labels: ['18-24', '25-34', '35-44', '45-54', '55+'],
+            datasets: [{
+                label: 'User Demographics',
+                data: [100, 200, 300, 400, 500], // Sample data, replace with your actual data
+                backgroundColor: '#007bff', // Customize the bar color
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    grid: {
+                        color: '#f3f3f3'
+                    }
+                }
+            }
+        }
+    });
+
+    // Activity Chart
+    var activityChart = new Chart(document.getElementById('activityChart'), {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'User Activity',
+                data: [50, 60, 70, 80, 90, 100], // Sample data, replace with your actual data
+                borderColor: '#007bff', // Customize the line color
+                backgroundColor: 'rgba(0, 123, 255, 0.1)', // Customize the area fill color
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    grid: {
+                        color: '#f3f3f3'
+                    }
+                }
+            }
+        }
+    });
+</script>

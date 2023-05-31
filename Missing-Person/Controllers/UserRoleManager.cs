@@ -128,5 +128,9 @@ namespace Missing_Person.Controllers
 
             return RedirectToAction("ListRole");
         }
+        public IActionResult Statistic()
+        {
+            return View();
+        }
     }
 }
