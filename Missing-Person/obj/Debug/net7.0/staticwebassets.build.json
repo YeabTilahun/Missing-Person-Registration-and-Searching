@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QBg2L0llxDP5AWwIxzn6gRdnLvUj8fFo7lY8+6zLayM=",
+  "Hash": "iyUjt3rLtccaKIRgdbOhS7tq6iLu0YDC88UKtN98gI0=",
   "Source": "Missing-Person",
   "BasePath": "_content/Missing-Person",
   "Mode": "Default",
@@ -1105,6 +1105,23 @@
       "OriginalItemSpec": "wwwroot\\MissingPerson\\Image\\7bab0d60-07a1-45f1-96db-3b176105726c_Arteta2.jpg"
     },
     {
+      "Identity": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\MissingPerson\\Image\\c78f5bc9-9373-466b-a55d-ff232fa9cc00_6b99e07e-6772-4f2a-adc6-0322a5e09641_fade.jpg",
+      "SourceId": "Missing-Person",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\",
+      "BasePath": "_content/Missing-Person",
+      "RelativePath": "MissingPerson/Image/c78f5bc9-9373-466b-a55d-ff232fa9cc00_6b99e07e-6772-4f2a-adc6-0322a5e09641_fade.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\MissingPerson\\Image\\c78f5bc9-9373-466b-a55d-ff232fa9cc00_6b99e07e-6772-4f2a-adc6-0322a5e09641_fade.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\MissingPerson\\Image\\d77246e5-f662-4784-9896-513481e2f4ea_surafel.jpg",
       "SourceId": "Missing-Person",
       "SourceType": "Discovered",
@@ -1154,23 +1171,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\MissingPerson\\Image\\e4693f4b-e02e-4f18-853a-f1be4dc6cdbe_Arteta.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\MissingPerson\\Search\\eff4c222-9b63-4b11-87cd-94e246ba8ed0_surafel.jpg",
-      "SourceId": "Missing-Person",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\",
-      "BasePath": "_content/Missing-Person",
-      "RelativePath": "MissingPerson/Search/eff4c222-9b63-4b11-87cd-94e246ba8ed0_surafel.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\MissingPerson\\Search\\eff4c222-9b63-4b11-87cd-94e246ba8ed0_surafel.jpg"
     },
     {
       "Identity": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\MissingPerson\\Search\\f1c3e78a-b7d5-4c00-a307-b829aea69bcf_surafel.jpg",
