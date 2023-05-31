@@ -45,6 +45,8 @@ namespace Missing_Person.Repository
             {
                 data.Add(context.MissingPersons.FirstOrDefault(e => e.ImageUrl == item));
             }
+            //remove if their is null inside data
+            data.RemoveAll(e => e == null);
             return data;
         }
 

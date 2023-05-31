@@ -6,6 +6,5 @@ namespace Missing_Person.ViewModel
     {
         public List<MissingPerson>? MissingPeople { get; set; }
         public MissingPerson? MissingPerson { get; set; }
-
     }
 }

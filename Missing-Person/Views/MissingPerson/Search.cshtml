@@ -1,5 +1,6 @@
 ﻿@model Missing_Person.ViewModel.DisplayAllViewModel
-
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> userManager
 @{
     Layout = "_Layout";
 }
@@ -7,6 +8,10 @@
 <h3>Search Result</h3>
 
 <div class="row">
+    @if(Model.MissingPeople.Count == 0)
+    {
+        <h4>No result found</h4>
+    }
     @foreach (var missingPerson in Model.MissingPeople)
     {
 
@@ -17,6 +22,16 @@
                     <h5 class="card-title">@missingPerson.Name</h5>
                     <p class="card-text">@missingPerson.Description</p>
                     <a href="@Url.Action("Details", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-primary">See Details</a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        var user = await userManager.GetUserAsync(User);
+                        var role = await userManager.GetRolesAsync(user);
+                        if (role.Contains("Admin"))
+                        {
+                            <a href="@Url.Action("Edit", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-success">Approve</a>
+                            <a href="@Url.Action("Delete", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-danger">Disapprove</a>
+                        }
+                    }
                 </div>
             </div>
         </div>

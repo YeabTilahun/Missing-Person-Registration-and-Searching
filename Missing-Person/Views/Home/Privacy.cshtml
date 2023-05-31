@@ -1,6 +1,58 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
+﻿@model Missing_Person.ViewModel.DisplayAllViewModel
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> userManager
+@{
+    ViewData["Title"] = "Home Page";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="text-center">
+    <h1 class="display-4 text-danger fw-bold" >Missing</h1>
+</div>
+
+<h3>Missing People</h3>
+
+<div class="row">
+    @foreach (var missingPerson in Model.MissingPeople)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="~/@missingPerson.ImageUrl" class="card-img-top" alt="Missing Person Image" sizes="150px">
+                <div class="card-body">
+                    <h5 class="card-title">@missingPerson.Name</h5>
+                    <p class="card-text">@missingPerson.Description</p>
+                    <a href="@Url.Action("Details", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-primary">See Details</a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        var user = await userManager.GetUserAsync(User);
+                        var role = await userManager.GetRolesAsync(user);
+                        if (role.Contains("Admin"))
+                        {
+                            <a href="@Url.Action("Edit", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-success">Approve</a>
+                            <a href="@Url.Action("Delete", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-danger">Disapprove</a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('input[name="SearchOption"]').change(function () {
+                var selectedOption = $('input[name="SearchOption"]:checked').val();
+                if (selectedOption === "ByImage") {
+                    $('#imageSearch').show();
+                    $('#nameSearch').hide();
+                } else {
+                    $('#imageSearch').hide();
+                    $('#nameSearch').show();
+                }
+            });
+        });
+    </script>
+}
+
+

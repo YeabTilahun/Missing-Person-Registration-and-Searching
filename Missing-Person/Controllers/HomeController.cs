@@ -24,7 +24,8 @@ namespace Missing_Person.Controllers
 
         public IActionResult Index()
         {
-            return RedirectToAction("DisplayAll");
+           
+            return View();
         }
         [AllowAnonymous]
         [HttpGet]
@@ -35,11 +36,11 @@ namespace Missing_Person.Controllers
             {
                 MissingPeople = model
             };
-            return View("Index",displayAllViewModel);
+            return View("Privacy", displayAllViewModel);
         }
         public IActionResult Privacy()
         {
-            return View("NotFound");
+            return RedirectToAction("DisplayAll");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

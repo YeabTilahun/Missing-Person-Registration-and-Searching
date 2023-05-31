@@ -118,19 +118,18 @@ namespace Missing_Person.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Search(SearchViewModel? mp)
+        public IActionResult Search(MissingPerson? mp, string? name)
         {
-            mp.searchName = "yeabsira";
-            if (mp.searchImage != null)
+            if (mp.ImagePath != null)
             {
                 string imgPaths = "";
                 List<string> result = new List<string>();
                 string path = "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\";
 
                 //save the image provided by the user in the folder Search
-                string imgPath = @"MissingPerson\Search\" + Guid.NewGuid().ToString() + "_" + mp.searchImage.FileName;
+                string imgPath = @"MissingPerson\Search\" + Guid.NewGuid().ToString() + "_" + mp.ImagePath.FileName;
                 string serverPath = Path.Combine(webHostEnvironment.WebRootPath, imgPath);
-                mp.searchImage.CopyTo(new FileStream(serverPath, FileMode.Create));
+                mp.ImagePath.CopyTo(new FileStream(serverPath, FileMode.Create));
                 imgPaths= imgPath;
 
                 //get all the files in the folder Image
@@ -185,7 +184,7 @@ namespace Missing_Person.Controllers
                         Imgurls.Add(x.Substring(1));
                     }
                     List<MissingPerson> missingPerson = imissingPersonRepository.GetMissingPersonByImage(Imgurls);
-                    var displayAllViewModel = new SearchViewModel()
+                    DisplayAllViewModel displayAllViewModel = new DisplayAllViewModel()
                     {
                         MissingPeople = missingPerson,
                     };
@@ -198,13 +197,12 @@ namespace Missing_Person.Controllers
                 }
 
             }
-           
-            else if(mp.searchName != null)
+            else if(name != null)
             {
-                List<MissingPerson> missingPerson = imissingPersonRepository.SearchByName(mp.searchName);
+                List<MissingPerson> missingPerson = imissingPersonRepository.SearchByName(name);
                 if (missingPerson != null)
                 {
-                    var displayAllViewModel = new SearchViewModel()
+                    DisplayAllViewModel displayAllViewModel = new DisplayAllViewModel()
                     {
                         MissingPeople = missingPerson,
                     };
