@@ -58,7 +58,8 @@ namespace Missing_Person.Repository
 
         public List<MissingPerson> SearchByName(string name)
         {
-            return context.MissingPersons.Where(e => e.Name == name).ToList();
+            //return where name is like the name in the database use like to search or %% to search
+            return context.MissingPersons.Where(e => e.Name.Contains(name)).ToList();
         }
 
         public MissingPerson UpdateMissingPerson(MissingPerson missingPerson)
@@ -68,16 +69,7 @@ namespace Missing_Person.Repository
             context.SaveChanges();
             return missingPerson;
         }
-       /* public MissingPerson UpdateMissingPersonStatus(int id, string status)
-        {
-            MissingPerson missingPerson = context.MissingPersons.Find(id);
-            if (missingPerson != null)
-            {
-                missingPerson.Status = status;
-                context.SaveChanges();
-            }
-            return missingPerson;
-        }*/
+       
         public List<MissingPerson> GetMissingPersonByUserId(string userId)
         {
             return context.MissingPersons.Where(e => e.User_Id == userId).ToList();

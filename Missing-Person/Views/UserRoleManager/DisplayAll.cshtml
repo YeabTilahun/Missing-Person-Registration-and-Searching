@@ -1,88 +1,40 @@
-﻿@using Microsoft.AspNetCore.Identity
-@model IEnumerable<IdentityRole>
-
+﻿@model Missing_Person.ViewModel.DisplayAllViewModel
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> userManager
 @{
-    ViewBag.Title = "All Roles";
+    Layout = "_Layout";
 }
 
-<h1 class="display-3">All Roles</h1>
+<h2 class="display-4">Missing Person</h2>
 
-@if (Model.Any())
-{
-    <a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRole" asp-controller="administration">Add new role</a>
-
-    @foreach (var role in Model)
+<div class="row">
+    @foreach (var missingPerson in Model.MissingPeople)
     {
-        <div class="card mb-3">
-            <div class="card-header" style="background-color: #457b9d; color: #fff; font-weight: normal;">
-                Role Id: @role.Id
-            </div>
-            <div class="card-body">
-                <h5 class="card-title" style="color: #333;">@role.Name</h5>
-            </div>
-            <div class="card-footer">
-                <a class="btn btn-primary" asp-action="EditUsersInRole" asp-controller="UserRoleManager" asp-route-id="@role.Id">Edit</a>
-                <a asp-action="DeleteRole" asp-controller="UserRoleManager" asp-route-id="@role.Id class=" btn btn-danger">Delete</a>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="~/@missingPerson.ImageUrl" class="card-img-top" alt="Missing Person Image" sizes="150px">
+                <div class="card-body">
+                    <h4 class="card-title">@missingPerson.Name</h4>
+                    <p class="card-text">@missingPerson.Description</p>
+                    <a href="@Url.Action("Details", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-primary">See Details</a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        var user = await userManager.GetUserAsync(User);
+                        var role = await userManager.GetRolesAsync(user);
+                        if (role.Contains("Admin"))
+                        {
+                            if (missingPerson.IsApproved == false)
+                            {
+                                <a href="@Url.Action("Approve", "UserRoleManager", new { id = missingPerson.Id })" class="btn btn-success">Approve</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Disapprove", "UserRoleManager", new { id = missingPerson.Id })" class="btn btn-danger">Disapprove</a>
+                            }
+                        }
+                    }
+                </div>
             </div>
         </div>
     }
-}
-else
-{
-    <div class="card">
-        <div class="card-header" style="background-color: #e63946; color: #fff; font-weight: normal;">
-            No roles created yet
-        </div>
-        <div class="card-body">
-            <h5 class="card-title" style="color: #333;">
-                Use the button below to create a role
-            </h5>
-            <a class="btn btn-primary" style="width:auto" asp-controller="UserRoleManager" asp-action="CreateRole">Create Role</a>
-        </div>
-    </div>
-}
-
-<style>
-    .display-3 {
-        font-size: 28px;
-        font-weight: normal;
-        color: #e63946;
-        margin-bottom: 30px;
-    }
-
-    .btn-primary {
-        background-color: #457b9d;
-        border-color: #457b9d;
-        color: #fff;
-    }
-
-        .btn-primary:hover,
-        .btn-primary:focus {
-            background-color: #1d3557;
-            border-color: #1d3557;
-        }
-
-    .btn-danger {
-        background-color: #e63946;
-        border-color: #e63946;
-        color: #fff;
-    }
-
-        .btn-danger:hover,
-        .btn-danger:focus {
-            background-color: #a61d24;
-            border-color: #a61d24;
-        }
-
-    .card {
-        margin-bottom: 20px;
-    }
-
-    .card-header {
-        font-weight: bold;
-    }
-
-    .card-body {
-        color: #333;
-    }
-</style>
+</div>
