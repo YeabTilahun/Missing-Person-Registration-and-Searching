@@ -5,25 +5,107 @@
     Layout = "_Layout";
 }
 
-<h3 class="display-4">Missing Person</h3>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Missing Person</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
 
-<div class="row">
-    @foreach (var missingPerson in Model.MissingPeople)
-    {
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="~/@missingPerson.ImageUrl" class="card-img-top" alt="Missing Person Image" sizes="150px">
-                <div class="card-body">
-                    <h5 class="card-title">@missingPerson.Name</h5>
-                    <p class="card-text">@missingPerson.Description</p>
-                    <a href="@Url.Action("Details", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-primary">See Details</a>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        var user = await userManager.GetUserAsync(User);
-                        var role = await userManager.GetRolesAsync(user);
-                    }
+        .display-4 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .row {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        .col-md-4 {
+            padding: 15px;
+        }
+
+        .card {
+            position: relative;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+            }
+
+        .card-img-top {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <h3 class="display-4">Missing Person</h3>
+
+    <div class="row">
+        @foreach (var missingPerson in Model.MissingPeople)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="~/@missingPerson.ImageUrl" class="card-img-top" alt="Missing Person Image" sizes="150px">
+                    <div class="card-body">
+                        <h5 class="card-title">@missingPerson.Name</h5>
+                        <p class="card-text">@missingPerson.Description</p>
+                        <a href="@Url.Action("Details", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-primary">See Details</a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            var user = await userManager.GetUserAsync(User);
+                            var role = await userManager.GetRolesAsync(user);
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
-    }
-</div>
+        }
+    </div>
+</body>
+</html>

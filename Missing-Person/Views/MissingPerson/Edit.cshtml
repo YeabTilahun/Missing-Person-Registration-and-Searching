@@ -3,10 +3,44 @@
 @{
     Layout = "_Layout";
 }
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    h1 {
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    hr {
+        border-top: 1px solid #ccc;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 30px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    textarea {
+        height: 150px;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+</style>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h1 class="text-center">Missing Person</h1>
+            <h1>Missing Person</h1>
             <hr />
             <form method="post" enctype="multipart/form-data" asp-action="Edit" asp-controller="MissingPerson">
                 <input type="hidden" asp-for="@Model.MissingPerson.Id" />

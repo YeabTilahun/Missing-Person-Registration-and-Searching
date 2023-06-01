@@ -4,35 +4,98 @@
     ViewBag.Title = "Login";
 }
 
-
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h1 class=" display-4 text-center">Login</h1>
+            <h1 class="display-6 text-center">Login</h1>
             <hr />
-        <form method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label asp-for="RememberMe">
-                        <input asp-for="RememberMe" />
-                        @Html.DisplayNameFor(m => m.RememberMe)
-                    </label>
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="RememberMe">
+                            <input asp-for="RememberMe" />
+                            @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
         </div>
     </div>
 </div>
+
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    .display-6 {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .text-danger {
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+    }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #138496;
+            border-color: #117a8b;
+        }
+
+        .btn-primary:active,
+        .btn-primary.active {
+            background-color: #117a8b;
+            border-color: #0f6770;
+        }
+
+    .form-control {
+        border-radius: 0;
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+
+        .form-control:focus {
+            border-color: #17a2b8;
+            box-shadow: none;
+        }
+
+    .checkbox label {
+        font-weight: normal;
+    }
+</style>

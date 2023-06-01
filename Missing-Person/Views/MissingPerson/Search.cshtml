@@ -5,12 +5,46 @@
     Layout = "_Layout";
 }
 
-<h3 class="display-3">Search Result</h3>
+<style>
+    .search-result-heading {
+        margin-bottom: 30px;
+    }
+
+    .no-result-message {
+        margin-top: 20px;
+    }
+
+    .card {
+        margin-bottom: 30px;
+    }
+
+    .card-img-top {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        margin-bottom: 15px;
+    }
+
+    .card-body .btn-primary {
+        margin-top: 10px;
+    }
+</style>
+
+<h3 class="display-3 search-result-heading">Search Result</h3>
 
 <div class="row">
-    @if(Model.MissingPeople.Count == 0)
+    @if (Model.MissingPeople.Count == 0)
     {
-        <h4>No result found</h4>
+        <h4 class="no-result-message">No results found</h4>
     }
     @foreach (var missingPerson in Model.MissingPeople)
     {

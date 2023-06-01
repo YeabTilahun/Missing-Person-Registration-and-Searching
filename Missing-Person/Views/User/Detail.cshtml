@@ -5,7 +5,7 @@
     ViewBag.Title = "User Details";
 }
 
-<h1 class="display-3">User Details</h1>
+<h1 class="display-3">Details</h1>
 
 <div class="container">
     <div class="row">
@@ -30,15 +30,51 @@
                 <dt class="col-sm-3">Country:</dt>
                 <dd class="col-sm-9">@Model.user.Country</dd>
             </dl>
-            @if (User.Identity.IsAuthenticated)
-            {
-                var userx = await userManager.GetUserAsync(User);
-            if (userx.Id == Model.user.Id)
-                {
-                    <a href="@Url.Action("Edit", "User", new { user = Model.user.Id })" class="btn btn-primary">Edit</a>
-                }
-            }
-                             
+            
         </div>
     </div>
 </div>
+
+<style>
+    .display-3 {
+        font-size: 28px;
+        font-weight: normal;
+        color: #e63946;
+        margin-bottom: 30px;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .row {
+        margin-bottom: 20px;
+    }
+
+    dl.row {
+        font-size: 18px;
+    }
+
+    dt.col-sm-3 {
+        font-weight: normal;
+        color: #457b9d;
+        margin-bottom: 5px;
+    }
+
+    dd.col-sm-9 {
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        background-color: #457b9d;
+        border-color: #457b9d;
+        color: #fff;
+    }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #1d3557;
+            border-color: #1d3557;
+        }
+</style>

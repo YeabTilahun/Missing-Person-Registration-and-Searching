@@ -10,7 +10,62 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Missing_Person.styles.css" asp-append-version="true" />
 
+    <style>
+        /* Custom styles for the navigation bar */
+        .navbar {
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
+        .navbar-brand {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .navbar-nav .nav-link {
+            color: #333;
+        }
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item {
+            color: #333;
+        }
+
+            .dropdown-item:hover {
+                background-color: #f8f9fa;
+                color: #333;
+            }
+
+        /* Custom styles for the container */
+        .container {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        /* Custom styles for the footer */
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+            .footer a {
+                color: #333;
+            }
+
+        /* Custom styles for the page content */
+        main {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -23,21 +78,18 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Home</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Search</a>
-                        </li>                    
+                        </li>
                         @if (!User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="MissingPerson" asp-action="Register">Report Missing Person</a>
                             </li>
                         }
-                                      
                     </ul>
 
                     <ul class="navbar-nav">
@@ -45,7 +97,7 @@
                         {
                             var user = await userManager.GetUserAsync(User);
                             var role = await userManager.GetRolesAsync(user);
-                            
+
                             @if (role.Contains("Admin"))
                             {
                                 <li class="nav-item">
@@ -77,8 +129,6 @@
                                     <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                                 </div>
                             </li>
-
-
                         }
                         else
                         {

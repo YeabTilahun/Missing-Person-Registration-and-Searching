@@ -4,12 +4,38 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+<style>
+    .search-heading {
+        margin-bottom: 40px;
+    }
+
+    .search-option {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+        .search-option label {
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+    .form-control-file {
+        margin-top: 10px;
+    }
+
+    .search-submit {
+        width: 200px;
+        margin-top: 10px;
+    }
+</style>
+
+<div class="text-center search-heading">
     <h1 class="display-4">Search</h1>
 </div>
 
 <form asp-action="Search" asp-controller="MissingPerson" method="post" class="mt-3" enctype="multipart/form-data">
-    <div class="form-group row justify-content-center">
+    <div class="form-group row justify-content-center search-option">
         <div class="col-sm-10 justify-content-center">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="SearchOption" id="searchByName" value="ByName" checked>
@@ -38,11 +64,10 @@
 
     <div class="form-group row justify-content-center">
         <div class="col-sm-10">
-            <input type="submit" value="Search" class="btn btn-primary mb-2 d-block mx-auto" style="width: 200px; margin-top: 10px;" />
+            <input type="submit" value="Search" class="btn btn-primary mb-2 d-block mx-auto search-submit" />
         </div>
     </div>
 </form>
-
 
 @section Scripts {
     <script>

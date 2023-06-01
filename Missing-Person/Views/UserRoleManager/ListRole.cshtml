@@ -5,24 +5,23 @@
     ViewBag.Title = "All Roles";
 }
 
-<h1>All Roles</h1>
+<h1 class="display-3">All Roles</h1>
 
 @if (Model.Any())
 {
-    <a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRole"
-   asp-controller="administration">Add new role</a>
+    <a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRole" asp-controller="administration">Add new role</a>
 
-    foreach (var role in Model)
+    @foreach (var role in Model)
     {
         <div class="card mb-3">
-            <div class="card-header">
-                Role Id : @role.Id
+            <div class="card-header" style="background-color: #457b9d; color: #fff;">
+                Role Id: @role.Id
             </div>
             <div class="card-body">
                 <h5 class="card-title">@role.Name</h5>
             </div>
             <div class="card-footer">
-                <a class="btn btn-primary" asp-action="EditUsersInRole" asp-controller="UserRoleManager" asp-route-id="@role.Id" >Edit</a>
+                <a class="btn btn-primary" asp-action="EditUsersInRole" asp-controller="UserRoleManager" asp-route-id="@role.Id">Edit</a>
                 <a href="#" class="btn btn-danger">Delete</a>
             </div>
         </div>
@@ -31,17 +30,59 @@
 else
 {
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="background-color: #e63946; color: #fff;">
             No roles created yet
         </div>
         <div class="card-body">
             <h5 class="card-title">
                 Use the button below to create a role
             </h5>
-            <a class="btn btn-primary" style="width:auto"
-           asp-controller="UserRoleManager" asp-action="CreateRole">
-                Create Role
-            </a>
+            <a class="btn btn-primary" style="width:auto" asp-controller="UserRoleManager" asp-action="CreateRole">Create Role</a>
         </div>
     </div>
 }
+
+<style>
+    .display-3 {
+        font-size: 28px;
+        font-weight: normal;
+        color: #e63946;
+        margin-bottom: 30px;
+    }
+
+    .btn-primary {
+        background-color: #457b9d;
+        border-color: #457b9d;
+        color: #fff;
+    }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #1d3557;
+            border-color: #1d3557;
+        }
+
+    .btn-danger {
+        background-color: #e63946;
+        border-color: #e63946;
+        color: #fff;
+    }
+
+        .btn-danger:hover,
+        .btn-danger:focus {
+            background-color: #a61d24;
+            border-color: #a61d24;
+        }
+
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .card-header {
+        font-weight: bold;
+    }
+
+    .card-body {
+        color: #333;
+    }
+</style>

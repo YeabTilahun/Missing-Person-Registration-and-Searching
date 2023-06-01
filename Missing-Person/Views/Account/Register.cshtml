@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h1 class=" display-4 text-center ">Registration</h1>
+            <h1 class="display-6 text-center">Registration</h1>
             <hr />
             <form method="post">
                 <div asp-validation-summary="All" class="text-danger"></div>
@@ -68,3 +68,68 @@
         </div>
     </div>
 </div>
+
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    .display-6 {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .text-danger {
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        background-color: #428bca;
+        border-color: #428bca;
+    }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #3071a9;
+            border-color: #285e8e;
+        }
+
+        .btn-primary:active,
+        .btn-primary.active {
+            background-color: #285e8e;
+            border-color: #204d74;
+        }
+
+    .form-control {
+        border-radius: 0;
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+
+        .form-control:focus {
+            border-color: #428bca;
+            box-shadow: none;
+        }
+
+    .text-center {
+        margin-top: 20px;
+    }
+</style>

@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h1 class="text-center display-4">Register Missing Person</h1>
+            <h1 style="" class="text-center display-6">Register Missing Person</h1>
             <hr />
             <form method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="All" class="text-danger"></div>
@@ -88,3 +88,40 @@
         </div>
     </div>
 </div>
+
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    .display-4 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .text-danger {
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+</style>

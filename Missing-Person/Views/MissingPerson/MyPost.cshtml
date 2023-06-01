@@ -4,7 +4,61 @@
     Layout = "_Layout";
 }
 
-<h3>Missing People</h3>
+<style>
+    h3 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        margin-bottom: 30px;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .display-4 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    .lead {
+        font-size: 18px;
+    }
+
+    .card {
+        border: none;
+        transition: transform 0.3s;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+    .card-img-top {
+        height: 330px;
+        object-fit: cover;
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+</style>
+
+<h3>My Post</h3>
 
 <div class="row">
     @if (Model.MissingPeople == null)
@@ -12,7 +66,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <h1 class="display-4"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Ffreepng%2Fempty-box-icon-for-your-project_4863429.html&psig=AOvVaw3BONRvahhPxf4QgloXWIVM&ust=1685555086299000&source=images&cd=vfe&ved=0CA4QjRxqFwoTCMiH9p7Mnf8CFQAAAAAdAAAAABAD"></img></h1>
+                    <h1 class="display-4">
+                        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Ffreepng%2Fempty-box-icon-for-your-project_4863429.html&psig=AOvVaw3BONRvahhPxf4QgloXWIVM&ust=1685555086299000&source=images&cd=vfe&ved=0CA4QjRxqFwoTCMiH9p7Mnf8CFQAAAAAdAAAAABAD" alt="Empty Box Icon" width="150px">
+                    </h1>
                     <p class="lead">No data found</p>
                 </div>
             </div>

@@ -4,65 +4,127 @@
     ViewBag.Title = "Edit User Profile";
 }
 
-<h1 class="display-2">Edit Profile</h1>
-<hr />
+<div class="container">
+    <h1 class="display-2">Edit Profile</h1>
+    <hr />
 
-<form asp-action="Edit" asp-controller="User" method="post" class="mt-3">
+    <form asp-action="Edit" asp-controller="User" method="post" class="mt-3">
+        <input type="hidden" asp-for="@Model.users.Id" />
+        <div asp-validation-summary="All" class="text-danger"></div>
 
+        <div class="form-group">
+            <label asp-for="@Model.users.FirstName">First Name</label>
+            <input asp-for="@Model.users.FirstName" class="form-control" />
+            <span asp-validation-for="@Model.users.FirstName" class="text-danger"></span>
+        </div>
 
-    <input type="hidden" asp-for="@Model.users.Id" />
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="@Model.users.FirstName">First Name</label>
-        <input asp-for="@Model.users.FirstName" class="form-control" />
-        <span asp-validation-for="@Model.users.FirstName" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="@Model.users.LastName">Last Name</label>
+            <input asp-for="@Model.users.LastName" class="form-control" />
+            <span asp-validation-for="@Model.users.LastName" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="@Model.users.LastName">Last Name</label>
-        <input asp-for="@Model.users.LastName" class="form-control" />
-        <span asp-validation-for="@Model.users.LastName" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="@Model.users.Email">Email</label>
+            <input asp-for="@Model.users.Email" class="form-control" />
+            <span asp-validation-for="@Model.users.Email" class="text-danger"></span>
+        </div>
 
+        <div class="form-group">
+            <label asp-for="@Model.users.Password">Password</label>
+            <input asp-for="@Model.users.Password" class="form-control" />
+            <span asp-validation-for="@Model.users.Password" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="@Model.users.Email">Email</label>
-        <input asp-for="@Model.users.Email" class="form-control" />
-        <span asp-validation-for="@Model.users.Email" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="@Model.users.Address">Address</label>
+            <input asp-for="@Model.users.Address" class="form-control" />
+            <span asp-validation-for="@Model.users.Address" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="@Model.users.Password">Password</label>
-        <input asp-for="@Model.users.Password" class="form-control" />
-        <span asp-validation-for="@Model.users.Password" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="@Model.users.Country">Country</label>
+            <input asp-for="@Model.users.Country" class="form-control" />
+            <span asp-validation-for="@Model.users.Country" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="@Model.users.Address">Address</label>
-        <input asp-for="@Model.users.Address" class="form-control" />
-        <span asp-validation-for="@Model.users.Address" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="@Model.users.City">City</label>
+            <input asp-for="@Model.users.City" class="form-control" />
+            <span asp-validation-for="@Model.users.City" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="@Model.users.Country">Country</label>
-        <input asp-for="@Model.users.Country" class="form-control" />
-        <span asp-validation-for="@Model.users.Country" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="@Model.users.ConfirmPassword">Enter password to edit</label>
+            <input asp-for="@Model.users.ConfirmPassword" class="form-control" />
+            <span asp-validation-for="@Model.users.ConfirmPassword" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="@Model.users.City">City</label>
-        <input asp-for="@Model.users.City" class="form-control" />
-        <span asp-validation-for="@Model.users.City" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.users.ConfirmPassword">Enter password to edit</label>
-        <input asp-for="@Model.users.ConfirmPassword" class="form-control" />
-        <span asp-validation-for="@Model.users.ConfirmPassword" class="text-danger"></span>
-    </div>
-    <div class="text-center">
-        <button type="submit" class="btn btn-primary">Update</button>
-        &nbsp;
-        <a asp-controller="User" asp-action="MyProfile" class="btn btn-primary bm-2">Cancel</a>
-    </div>
-</form>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a asp-controller="User" asp-action="MyProfile" class="btn btn-primary bm-2">Cancel</a>
+        </div>
+    </form>
+</div>
 
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    .display-2 {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: normal;
+    }
+
+    .text-danger {
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        background-color: #e63946;
+        border-color: #e63946;
+        color: #fff;
+    }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #c61e2e;
+            border-color: #c61e2e;
+        }
+
+        .btn-primary:active,
+        .btn-primary.active {
+            background-color: #a51824;
+            border-color: #a51824;
+        }
+
+    .form-control {
+        border-radius: 0;
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+
+        .form-control:focus {
+            border-color: #e63946;
+            box-shadow: none;
+        }
+
+    .text-center {
+        margin-top: 20px;
+    }
+</style>

@@ -99,6 +99,28 @@ namespace Missing_Person.Controllers
 
             return View(model);
         }
+        public IActionResult DeleteRole(string id)
+        {
+            var role = roleManager.FindByIdAsync(id).Result;
+            if (role == null)
+            {
+                ViewBag.ErrorMessage = $"Role with Id = {id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                var result = roleManager.DeleteAsync(role).Result;
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ListRole");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View("ListRole");
+            }
+        }
 
         [HttpPost]
         public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model, string Id)
@@ -146,7 +168,6 @@ namespace Missing_Person.Controllers
         {
             return View();
         }
-
 
         public IActionResult Approve(int id)
         {

@@ -7,22 +7,99 @@
 
 <h3 class="display-3">All Users</h3>
 
-<div class="row">
-    @foreach (var user in Model.users)
-    {
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">@user.FirstName @user.LastName</h5>
-                    <p class="card-text" style="font-size : 17px ">@user.UserName</p>
-                    <a href="@Url.Action("Detail", "User", new { id = user.Id })" class="btn btn-primary">See Details</a>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <a href="@Url.Action("Delete", "User", new { user = Model.user.Id })" class="btn btn-danger">Delete</a>
-
-                    }
+<div class="container">
+    <div class="row">
+        @foreach (var user in Model.users)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">@user.FirstName @user.LastName</h5>
+                        <p class="card-text" style="font-size: 17px">@user.UserName</p>
+                        <a href="@Url.Action("Detail", "User", new { id = user.Id })" class="btn btn-primary">See Details</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                var userx = await userManager.GetUserAsync(User);
+                                if (userx.Id != user.Id)
+                                {
+                                    <a href="@Url.Action("Delete", "User", new { user = Model.user.Id })" class="btn btn-danger">Delete</a>
+                                }
+                            }
+                            
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>
+
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    .display-3 {
+        font-size: 36px;
+        font-weight: normal;
+        margin-bottom: 30px;
+        color: #e63946;
+    }
+
+    .row {
+        margin-bottom: 20px;
+    }
+
+    .card {
+        border-color: #eaeaea;
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #457b9d;
+    }
+
+    .card-text {
+        font-size: 17px;
+        color: #333;
+    }
+
+    .btn-primary {
+        background-color: #457b9d;
+        border-color: #457b9d;
+        color: #fff;
+    }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #1d3557;
+            border-color: #1d3557;
+        }
+
+        .btn-primary:active,
+        .btn-primary.active {
+            background-color: #0b2441;
+            border-color: #0b2441;
+        }
+
+    .btn-danger {
+        background-color: #e63946;
+        border-color: #e63946;
+        color: #fff;
+    }
+
+        .btn-danger:hover,
+        .btn-danger:focus {
+            background-color: #ba181b;
+            border-color: #ba181b;
+        }
+
+        .btn-danger:active,
+        .btn-danger.active {
+            background-color: #8c0e11;
+            border-color: #8c0e11;
+        }
+</style>
