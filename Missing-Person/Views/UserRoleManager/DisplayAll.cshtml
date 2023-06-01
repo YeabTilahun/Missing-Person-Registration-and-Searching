@@ -5,7 +5,7 @@
     Layout = "_Layout";
 }
 
-<h3 class="display-4">Missing Person</h3>
+<h3>Missing People</h3>
 
 <div class="row">
     @foreach (var missingPerson in Model.MissingPeople)
@@ -21,6 +21,17 @@
                     {
                         var user = await userManager.GetUserAsync(User);
                         var role = await userManager.GetRolesAsync(user);
+                        if (role.Contains("Admin"))
+                        {
+                            if(missingPerson.IsApproved == false)
+                            {
+                                <a href="@Url.Action("Approve", "UserRoleManager", new { id = missingPerson.Id })" class="btn btn-success">Approve</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Disapprove", "UserRoleManager", new { id = missingPerson.Id })" class="btn btn-danger">Disapprove</a>
+                            }
+                        }
                     }
                 </div>
             </div>

@@ -45,6 +45,8 @@ namespace Missing_Person.Models
 
         public string? Missing_Date { get; set; }
 
+        public bool IsApproved { get; set;}
+
         //Foreign Key
         public string? User_Id { get; set; }
         public User? User { get; set; }

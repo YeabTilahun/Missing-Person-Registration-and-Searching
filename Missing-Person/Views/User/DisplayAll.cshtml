@@ -1,10 +1,11 @@
 ﻿@model Missing_Person.ViewModel.DisplayAllUser
-
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> userManager
 @{
     Layout = "_Layout";
 }
 
-<h3>Missing People</h3>
+<h3 class="display-3">All Users</h3>
 
 <div class="row">
     @foreach (var user in Model.users)
@@ -15,6 +16,11 @@
                     <h5 class="card-title">@user.FirstName @user.LastName</h5>
                     <p class="card-text" style="font-size : 17px ">@user.UserName</p>
                     <a href="@Url.Action("Detail", "User", new { id = user.Id })" class="btn btn-primary">See Details</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a href="@Url.Action("Delete", "User", new { user = Model.user.Id })" class="btn btn-danger">Delete</a>
+
+                    }
                 </div>
             </div>
         </div>

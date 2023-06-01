@@ -4,31 +4,100 @@
     ViewBag.Title = "Missing Person Details";
 }
 
-<h4>Missing Person Details</h4>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Missing Person Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
 
-<div class="card mb-3">
-    <div class="row no-gutters">
-        <div class="col-md-4">
-            <img src="~/@Model.MissingPerson.ImageUrl" class="card-img" alt="Missing Person Image" sizes="150px">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">@Model.MissingPerson.Name</h5>
-                <p class="card-text"><strong>Date of Birth:</strong> @Model.MissingPerson.DOB</p>
-                <p class="card-text"><strong>Gender:</strong> @Model.MissingPerson.Gender</p>
-                <p class="card-text"><strong>Height:</strong> @Model.MissingPerson.Height</p>
-                <p class="card-text"><strong>Weight:</strong> @Model.MissingPerson.Weight</p>
-                <p class="card-text"><strong>Eye Color:</strong> @Model.MissingPerson.Eye_Color</p>
-                <p class="card-text"><strong>Hair Color:</strong> @Model.MissingPerson.Hair_Color</p>
-                <p class="card-text"><strong>Race:</strong> @Model.MissingPerson.Race</p>
-                <p class="card-text"><strong>Last Location:</strong> @Model.MissingPerson.Last_Location</p>
-                <p class="card-text"><strong>Description:</strong> @Model.MissingPerson.Description</p>
-                <p class="card-text"><strong>Contact:</strong> @Model.MissingPerson.Contact</p>
-                <p class="card-text"><strong>Status:</strong> @Model.MissingPerson.Status</p>
-                <p class="card-text"><strong>Missing Date:</strong> @Model.MissingPerson.Missing_Date</p>
+        h4 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .card-img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <h4>Missing Person Details</h4>
+
+    <div class="card mb-3">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="~/@Model.MissingPerson.ImageUrl" class="card-img" alt="Missing Person Image" sizes="150px">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.MissingPerson.Name</h5>
+                    <p class="card-text"><strong>Date of Birth:</strong> @Model.MissingPerson.DOB</p>
+                    <p class="card-text"><strong>Gender:</strong> @Model.MissingPerson.Gender</p>
+                    <p class="card-text"><strong>Height:</strong> @Model.MissingPerson.Height</p>
+                    <p class="card-text"><strong>Weight:</strong> @Model.MissingPerson.Weight</p>
+                    <p class="card-text"><strong>Eye Color:</strong> @Model.MissingPerson.Eye_Color</p>
+                    <p class="card-text"><strong>Hair Color:</strong> @Model.MissingPerson.Hair_Color</p>
+                    <p class="card-text"><strong>Race:</strong> @Model.MissingPerson.Race</p>
+                    <p class="card-text"><strong>Last Location:</strong> @Model.MissingPerson.Last_Location</p>
+                    <p class="card-text"><strong>Description:</strong> @Model.MissingPerson.Description</p>
+                    <p class="card-text"><strong>Contact:</strong> @Model.MissingPerson.Contact</p>
+                    <p class="card-text"><strong>Status:</strong> @Model.MissingPerson.Status</p>
+                    <p class="card-text"><strong>Missing Date:</strong> @Model.MissingPerson.Missing_Date</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<a href="@Url.Action("DisplayAll", "MissingPerson")" class="btn btn-primary">Back to List</a>
+    <a href="@Url.Action("DisplayAll", "Home")" class="btn btn-primary">Back to home</a>
+</body>
+</html>

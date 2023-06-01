@@ -55,20 +55,27 @@ namespace Missing_Person.Controllers
         [HttpPost]
         public IActionResult Edit(MissingPerson missingPerson)
         {
-            
-            //for the image
-            string imgPath = @"MissingPerson\Image\" + Guid.NewGuid().ToString() + "_" + missingPerson.ImagePath.FileName;
-            string serverPath = Path.Combine(webHostEnvironment.WebRootPath, imgPath);
-            missingPerson.ImagePath.CopyTo(new FileStream(serverPath, FileMode.Create));
-            missingPerson.ImageUrl = imgPath;
+            if (ModelState.IsValid)
+            {
 
-            MissingPerson updatedMissingPerson = imissingPersonRepository.UpdateMissingPerson(missingPerson);
+                //for the image
+                string imgPath = @"MissingPerson\Image\" + Guid.NewGuid().ToString() + "_" + missingPerson.ImagePath.FileName;
+                string serverPath = Path.Combine(webHostEnvironment.WebRootPath, imgPath);
+                missingPerson.ImagePath.CopyTo(new FileStream(serverPath, FileMode.Create));
+                missingPerson.ImageUrl = imgPath;
 
-            var displayAllViewModel = new DisplayAllViewModel
+                MissingPerson updatedMissingPerson = imissingPersonRepository.UpdateMissingPerson(missingPerson);
+
+                var displayAllViewModel = new DisplayAllViewModel
                 {
                     MissingPerson = updatedMissingPerson
                 };
                 return RedirectToAction("Details", new { id = displayAllViewModel.MissingPerson.Id });
+            }
+            else
+            {
+                return View("CustomError");
+            }
         }
         [HttpPost]
         public IActionResult Register(MissingPerson missingPerson)
@@ -81,7 +88,8 @@ namespace Missing_Person.Controllers
                 missingPerson.ImageUrl = imgPath;
                 //get the user id who registered the missing person
                 missingPerson.User_Id = userManager.GetUserId(HttpContext.User);
-                missingPerson.Status = "Not Found";
+                missingPerson.Status = "Missing";
+                missingPerson.IsApproved = false;
                 MissingPerson newMissingPerson = imissingPersonRepository.AddMissingPerson(missingPerson);
                 return RedirectToAction("Details", new { id = newMissingPerson.Id });
             }

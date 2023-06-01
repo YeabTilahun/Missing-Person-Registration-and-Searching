@@ -32,7 +32,13 @@ namespace Missing_Person.Repository
 
         public List<MissingPerson> GetMissingPeople()
         {
-           return context.MissingPersons.ToList<MissingPerson>();
+          //return missing person as  alist if the status is missing and if it is Approved
+            return context.MissingPersons.Where(e => e.Status == "Not Found" || e.Status=="Missing" && e.IsApproved == true).ToList();
+        }
+        public List<MissingPerson> GetMissingPeopleAdmin()
+        {
+            //return missing person as  alist if the status is missing and if it is Approved
+            return context.MissingPersons.ToList();
         }
         public MissingPerson GetMissingPerson(int id)
         {

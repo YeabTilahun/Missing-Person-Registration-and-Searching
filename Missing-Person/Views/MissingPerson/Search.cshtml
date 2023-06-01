@@ -5,7 +5,7 @@
     Layout = "_Layout";
 }
 
-<h3>Search Result</h3>
+<h3 class="display-3">Search Result</h3>
 
 <div class="row">
     @if(Model.MissingPeople.Count == 0)
@@ -26,11 +26,6 @@
                     {
                         var user = await userManager.GetUserAsync(User);
                         var role = await userManager.GetRolesAsync(user);
-                        if (role.Contains("Admin"))
-                        {
-                            <a href="@Url.Action("Edit", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-success">Approve</a>
-                            <a href="@Url.Action("Delete", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-danger">Disapprove</a>
-                        }
                     }
                 </div>
             </div>

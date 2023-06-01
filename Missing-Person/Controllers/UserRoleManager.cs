@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Missing_Person.Models;
+using Missing_Person.Repository;
 using Missing_Person.ViewModel;
 
 namespace Missing_Person.Controllers
@@ -12,11 +14,13 @@ namespace Missing_Person.Controllers
     {
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<User> userManager;
+        private readonly IMissingPersonRepository imissingPersonRepository;
         public UserRoleManager(RoleManager<IdentityRole> roleManager,
-                       UserManager<User> userManager)
+                       UserManager<User> userManager, IMissingPersonRepository imissingPersonRepository)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
+            this.imissingPersonRepository = imissingPersonRepository;
         }
         [HttpGet]
         public IActionResult CreateRole()
@@ -50,7 +54,16 @@ namespace Missing_Person.Controllers
             var roles = roleManager.Roles;
             return View(roles);
         }
-
+        [HttpGet]
+        public ViewResult DisplayAll()
+        {
+            var model = imissingPersonRepository.GetMissingPeopleAdmin();
+            var displayAllViewModel = new DisplayAllViewModel
+            {
+                MissingPeople = model
+            };
+            return View(displayAllViewModel);
+        }
         [HttpGet]
         public async Task<IActionResult> EditUsersInRole(string Id) //Id
         {
@@ -128,9 +141,26 @@ namespace Missing_Person.Controllers
 
             return RedirectToAction("ListRole");
         }
+        [HttpGet]
         public IActionResult Statistic()
         {
             return View();
+        }
+
+
+        public IActionResult Approve(int id)
+        {
+            var missingPerson = imissingPersonRepository.GetMissingPerson(id);
+            missingPerson.IsApproved = true;
+            MissingPerson updatedMissingPerson = imissingPersonRepository.UpdateMissingPerson(missingPerson);
+            return RedirectToAction("DisplayAll");
+        }
+        public IActionResult Disapprove(int id)
+        {
+            var missingPerson = imissingPersonRepository.GetMissingPerson(id);
+            missingPerson.IsApproved = false;
+            MissingPerson updatedMissingPerson = imissingPersonRepository.UpdateMissingPerson(missingPerson);
+            return RedirectToAction("DisplayAll");
         }
     }
 }

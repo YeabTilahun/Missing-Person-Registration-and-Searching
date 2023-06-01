@@ -4,61 +4,65 @@
     ViewBag.Title = "Edit User Profile";
 }
 
-<h1>Edit User Profile</h1>
+<h1 class="display-2">Edit Profile</h1>
 <hr />
 
 <form asp-action="Edit" asp-controller="User" method="post" class="mt-3">
 
-    <div class="form-group row">
-        <label asp-for="@Model.users.FirstName" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="@Model.users.FirstName" class="form-control mb-2" />
-            <span asp-validation-for="@Model.users.FirstName" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label asp-for="@Model.users.LastName" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <textarea asp-for="@Model.users.LastName" class="form-control mb-2"></textarea>
-            <span asp-validation-for="@Model.users.LastName" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label asp-for="@Model.users.UserName" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="@Model.users.UserName" class="form-control mb-2" />
-            <span asp-validation-for="@Model.users.UserName" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label asp-for="@Model.users.Address" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="@Model.users.Address" class="form-control mb-2" />
-            <span asp-validation-for="@Model.users.Address" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label asp-for="@Model.users.Country" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="@Model.users.Country" class="form-control mb-2" />
-            <span asp-validation-for="@Model.users.Country" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label asp-for="@Model.users.City" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="@Model.users.City" class="form-control mb-2" />
-            <span asp-validation-for="@Model.users.City" class="text-danger"></span>
-        </div>
+
+    <input type="hidden" asp-for="@Model.users.Id" />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="@Model.users.FirstName">First Name</label>
+        <input asp-for="@Model.users.FirstName" class="form-control" />
+        <span asp-validation-for="@Model.users.FirstName" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <div class="col-sm-10">
-            <input type="submit" value="Update" class="btn btn-primary bm-2" />
-            <a asp-controller="User" asp-action="MyProfile" class="btn btn-primary bm-2">Cancel</a>
-        </div>
+        <label asp-for="@Model.users.LastName">Last Name</label>
+        <input asp-for="@Model.users.LastName" class="form-control" />
+        <span asp-validation-for="@Model.users.LastName" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="@Model.users.Email">Email</label>
+        <input asp-for="@Model.users.Email" class="form-control" />
+        <span asp-validation-for="@Model.users.Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.users.Password">Password</label>
+        <input asp-for="@Model.users.Password" class="form-control" />
+        <span asp-validation-for="@Model.users.Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.users.Address">Address</label>
+        <input asp-for="@Model.users.Address" class="form-control" />
+        <span asp-validation-for="@Model.users.Address" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.users.Country">Country</label>
+        <input asp-for="@Model.users.Country" class="form-control" />
+        <span asp-validation-for="@Model.users.Country" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.users.City">City</label>
+        <input asp-for="@Model.users.City" class="form-control" />
+        <span asp-validation-for="@Model.users.City" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.users.ConfirmPassword">Enter password to edit</label>
+        <input asp-for="@Model.users.ConfirmPassword" class="form-control" />
+        <span asp-validation-for="@Model.users.ConfirmPassword" class="text-danger"></span>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Update</button>
+        &nbsp;
+        <a asp-controller="User" asp-action="MyProfile" class="btn btn-primary bm-2">Cancel</a>
     </div>
 </form>
-<div>
-    <a asp-action="MyProfile" asp-controller="User">Back to profile</a>
-</div>
+

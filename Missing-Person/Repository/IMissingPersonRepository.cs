@@ -12,6 +12,7 @@ namespace Missing_Person.Repository
         public List<MissingPerson> GetMissingPersonByImage(List<string> imgUrl);
         public List<MissingPerson> SearchByName(string name);
         public List<MissingPerson> GetMissingPersonByUserId(string userId);
+        public List<MissingPerson> GetMissingPeopleAdmin();
        // public MissingPerson UpdateMissingPersonStatus(int id, string status);
     }
 }

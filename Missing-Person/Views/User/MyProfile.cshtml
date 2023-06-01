@@ -4,7 +4,7 @@
     ViewBag.Title = "User Details";
 }
 
-<h1>User Details</h1>
+<h1 class="display-4">Profile Details</h1>
 
 <div class="container">
     <div class="row">
@@ -18,6 +18,9 @@
 
                 <dt class="col-sm-3">Email:</dt>
                 <dd class="col-sm-9">@Model.user.UserName</dd>
+
+                <dt class="col-sm-3">Password:</dt>
+                <dd class="col-sm-9">@Model.user.Password</dd>
 
                 <dt class="col-sm-3">Address:</dt>
                 <dd class="col-sm-9">@Model.user.Address</dd>

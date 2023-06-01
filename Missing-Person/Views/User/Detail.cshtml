@@ -1,15 +1,17 @@
 ﻿@model Missing_Person.ViewModel.DisplayAllUser
-
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> userManager
 @{
     ViewBag.Title = "User Details";
 }
 
-<h1>User Details</h1>
+<h1 class="display-3">User Details</h1>
 
 <div class="container">
     <div class="row">
         <div class="col-md-6">
             <dl class="row">
+                <dd class="col-sm-9 disabled visually-hidden">@Model.user.Id</dd>
                 <dt class="col-sm-3">First Name:</dt>
                 <dd class="col-sm-9">@Model.user.FirstName</dd>
 
@@ -28,8 +30,14 @@
                 <dt class="col-sm-3">Country:</dt>
                 <dd class="col-sm-9">@Model.user.Country</dd>
             </dl>
-
-            <a href="@Url.Action("Edit", "User", new { user = Model.user })" class="btn btn-primary">Edit</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                var userx = await userManager.GetUserAsync(User);
+            if (userx.Id == Model.user.Id)
+                {
+                    <a href="@Url.Action("Edit", "User", new { user = Model.user.Id })" class="btn btn-primary">Edit</a>
+                }
+            }
                              
         </div>
     </div>

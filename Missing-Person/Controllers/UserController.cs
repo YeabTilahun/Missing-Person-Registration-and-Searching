@@ -15,6 +15,7 @@ namespace Missing_Person.Controllers
             this.userManager = userManager;
             this.iuserRepository = iuserRepository;
         }
+
         [HttpGet]
         public IActionResult MyProfile(User user)
         {
@@ -88,10 +89,11 @@ namespace Missing_Person.Controllers
             {
                 user.FirstName = model.users.FirstName;
                 user.LastName = model.users.LastName;
-                user.Email = model.users.Email;
+                user.UserName = model.users.Email;
+                user.Password = model.users.Password;
                 user.City = model.users.City;
                 user.Country = model.users.Country;
-
+                user.Address = model.users.Address;
 
                 var result = await userManager.UpdateAsync(user);
 
@@ -108,30 +110,32 @@ namespace Missing_Person.Controllers
                 return View(model);
             }
         }
-
-        [HttpGet]
-        public IActionResult ChangePassword()
+        public async Task<IActionResult> Delete(string id)
         {
-            return View();
-        }
+            var user = await userManager.FindByIdAsync(id);
 
-        [HttpPost]
-        public IActionResult ChangePassword(MissingPerson missingPerson)
-        {
-            return View();
-        }
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User with Id = {id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                var result = await userManager.DeleteAsync(user);
 
-        [HttpGet]
-        public IActionResult MyPosts()
-        {
-            return View();
-        }
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("DisplayAll");
+                }
 
-        [HttpPost]
-        public IActionResult MyPosts(MissingPerson missingPerson)
-        {
-            return View();
-        }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
 
+                return View("DisplayAll");
+            }       
+        }
+       
     }
 }

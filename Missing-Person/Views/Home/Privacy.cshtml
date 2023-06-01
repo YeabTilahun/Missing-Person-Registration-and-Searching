@@ -9,8 +9,6 @@
     <h1 class="display-4 text-danger fw-bold" >Missing</h1>
 </div>
 
-<h3>Missing People</h3>
-
 <div class="row">
     @foreach (var missingPerson in Model.MissingPeople)
     {
@@ -25,11 +23,6 @@
                     {
                         var user = await userManager.GetUserAsync(User);
                         var role = await userManager.GetRolesAsync(user);
-                        if (role.Contains("Admin"))
-                        {
-                            <a href="@Url.Action("Edit", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-success">Approve</a>
-                            <a href="@Url.Action("Delete", "MissingPerson", new { id = missingPerson.Id })" class="btn btn-danger">Disapprove</a>
-                        }
                     }
                 </div>
             </div>

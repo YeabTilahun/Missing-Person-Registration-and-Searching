@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Missing_Person.Models;
 
@@ -11,9 +12,11 @@ using Missing_Person.Models;
 namespace Missing_Person.Migrations
 {
     [DbContext(typeof(MissingPersonDbContext))]
-    partial class MissingPersonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230531200750_sixth")]
+    partial class sixth
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -264,9 +267,6 @@ namespace Missing_Person.Migrations
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsApproved")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Last_Location")
                         .IsRequired()
