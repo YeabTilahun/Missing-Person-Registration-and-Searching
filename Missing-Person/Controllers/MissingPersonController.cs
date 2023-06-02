@@ -133,6 +133,7 @@ namespace Missing_Person.Controllers
                 string imgPaths = "";
                 List<string> result = new List<string>();
                 string path = "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\";
+                string path2 = Path.Combine(webHostEnvironment.WebRootPath);
 
                 //save the image provided by the user in the folder Search
                 string imgPath = @"MissingPerson\Search\" + Guid.NewGuid().ToString() + "_" + mp.ImagePath.FileName;
@@ -154,9 +155,10 @@ namespace Missing_Person.Controllers
                     FaceRecognition fr = FaceRecognition.Create(currentDirectory);
 
                     //concatenate the path of the image to the path of the folder
-                    string img = path + imgPaths;
+                   // string img = path + imgPaths;
+                    string img2 = path2 + "\\" + imgPaths;
 
-                    var FirstImageLoaded = FaceRecognition.LoadImageFile(img);
+                    var FirstImageLoaded = FaceRecognition.LoadImageFile(img2);
                     var FirstImageEncoded = fr.FaceEncodings(FirstImageLoaded).First();
 
                     List<string> imagesToCompare = new List<string>();
@@ -221,7 +223,7 @@ namespace Missing_Person.Controllers
                     return View("NotFound");
                 }
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Privacy", "Home");
         }
 
     }

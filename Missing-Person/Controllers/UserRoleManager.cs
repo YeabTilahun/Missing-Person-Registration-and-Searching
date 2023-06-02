@@ -39,7 +39,7 @@ namespace Missing_Person.Controllers
                 IdentityResult result = await roleManager.CreateAsync(identityRole);
                 if(result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Privacy", "Home");
                 }
                 foreach(IdentityError error in result.Errors)
                 {

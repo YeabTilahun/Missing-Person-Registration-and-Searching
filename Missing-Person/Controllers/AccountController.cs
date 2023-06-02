@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Localization;
 using Missing_Person.Models;
 using Missing_Person.ViewModel;
 
@@ -56,7 +57,7 @@ namespace Missing_Person.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Privacy", "Home");
                     }
                 }
 
@@ -92,7 +93,7 @@ namespace Missing_Person.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Privacy", "Home");
                     }
                 }
 
@@ -106,7 +107,7 @@ namespace Missing_Person.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Privacy", "Home");
         }
     }
 }

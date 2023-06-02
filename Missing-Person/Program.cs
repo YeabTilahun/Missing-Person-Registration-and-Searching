@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Missing_Person.Controllers;
@@ -14,7 +16,7 @@ builder.Services.AddControllersWithViews();
 
 //Services for identity and database
 builder.Services.AddDbContextPool<MissingPersonDbContext>(options => 
-options.UseSqlServer(builder.Configuration.GetConnectionString("MissingPersonContextConnection")));
+options.UseSqlServer(builder.Configuration.GetConnectionString("Missing-PersonContextConnection")));
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 { 
 options.Password.RequiredLength = 8;
