@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\MissingPerson\\Image\\bd9d73de-417e-4fe0-8c00-abcd04b6ef09_fade.jpg"
     },
     {
+      "Id": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\MissingPerson\\Search\\e4e1c9b7-34c3-4290-bc2f-864b699c7b63_fade.jpg",
+      "PackagePath": "staticwebassets\\MissingPerson\\Search\\e4e1c9b7-34c3-4290-bc2f-864b699c7b63_fade.jpg"
+    },
+    {
       "Id": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

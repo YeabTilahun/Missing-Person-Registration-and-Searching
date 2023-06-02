@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "F3fuW++8tVCJ9qc63z5YGFcfU4Q21eJx1NKRaMfQAT0=",
+  "Hash": "w+uWto9GjqMLXIu5G439DCrWeHEi/HJcYUUNotFcOao=",
   "Source": "Missing-Person",
   "BasePath": "_content/Missing-Person",
   "Mode": "Default",
@@ -1086,6 +1086,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\MissingPerson\\Image\\bd9d73de-417e-4fe0-8c00-abcd04b6ef09_fade.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\MissingPerson\\Search\\e4e1c9b7-34c3-4290-bc2f-864b699c7b63_fade.jpg",
+      "SourceId": "Missing-Person",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\",
+      "BasePath": "_content/Missing-Person",
+      "RelativePath": "MissingPerson/Search/e4e1c9b7-34c3-4290-bc2f-864b699c7b63_fade.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\MissingPerson\\Search\\e4e1c9b7-34c3-4290-bc2f-864b699c7b63_fade.jpg"
     }
   ]
 }

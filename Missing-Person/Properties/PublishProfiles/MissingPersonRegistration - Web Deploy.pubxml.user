@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAodftY8po9EmimntCvoMjnAAAAAACAAAAAAAQZgAAAAEAACAAAABMYFPykXh6svgDXYJI7fiu+VW1Pxn4wVw1K4ObMQivkgAAAAAOgAAAAAIAACAAAAAEppWnn8BMAdnaWW5fX5NFq+J7SEsXfP4SDSoIOWM6oIAAAABRdRiVo7mlHnbyCiTmcLVBvNMlpDX6tTsXW2PQA1sECqoV+6MZCQcE2pN15XMBo1yKNCitIxBAEvFGR7D5VNk2uHFhmdYZ/MYxxMYGMQyu3hXwA90wJEZLd++v5YztFzjDeHJZpRUc6GQvxHLRFdfFhdbeTo+oQJrphZ/YC/7yi0AAAAC1twaolUkWzF+XFdlxXi2Chsb/IZnYqJbfpVA/06+GZoZ+2OBOd1SGG7cR2Wm89GBRD5O/bZTPBcrnLf1pYQYR</EncryptedPassword>
+    <History>True|2023-06-02T04:25:09.0416392Z;True|2023-06-02T07:13:33.3447488+03:00;True|2023-06-02T06:46:21.2238500+03:00;True|2023-06-02T06:43:15.4675925+03:00;True|2023-06-02T06:35:50.0007821+03:00;False|2023-06-02T06:32:49.4309435+03:00;False|2023-06-02T06:32:00.7614479+03:00;True|2023-06-02T06:25:05.3816958+03:00;True|2023-06-02T06:03:28.8831152+03:00;True|2023-06-02T05:36:10.3575279+03:00;False|2023-06-02T05:21:58.1012150+03:00;False|2023-06-02T05:15:28.6925527+03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="Missing-PersonContextConnection">
+      <Value>Data Source=missing-persondbserver.database.windows.net,1433%3bInitial Catalog=Missing-Person_db%3bUser ID=yeabsira%3bPassword=Yeab%407899#!</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

@@ -24,7 +24,7 @@
                                 var userx = await userManager.GetUserAsync(User);
                                 if (userx.Id != user.Id)
                                 {
-                                    <a href="@Url.Action("Delete", "User", new { user = Model.user.Id })" class="btn btn-danger">Delete</a>
+                                    <a href="@Url.Action("Delete", "User", new { @user.Id })" class="btn btn-danger">Delete</a>
                                 }
                             }
                             

@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/MissingPersonRegistration/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsMissingPersonContextCon_4F83FBB9B0",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/missing-persondbserver/databases/Missing-Person_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:Missing-PersonContextConnection",
+      "dynamicId": null
+    }
+  }
+}

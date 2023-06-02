@@ -110,6 +110,7 @@ namespace Missing_Person.Controllers
                 return View(model);
             }
         }
+
         public async Task<IActionResult> Delete(string id)
         {
             var user = await userManager.FindByIdAsync(id);

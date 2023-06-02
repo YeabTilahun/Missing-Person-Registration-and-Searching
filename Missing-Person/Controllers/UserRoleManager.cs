@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Missing_Person.Models;
 using Missing_Person.Repository;
 using Missing_Person.ViewModel;
@@ -65,7 +66,7 @@ namespace Missing_Person.Controllers
             return View(displayAllViewModel);
         }
         [HttpGet]
-        public async Task<IActionResult> EditUsersInRole(string Id) //Id
+        public async Task<IActionResult> EditUsersInRole(string Id)
         {
             ViewBag.Id = Id;
             var role = await roleManager.FindByIdAsync(Id);
@@ -76,8 +77,10 @@ namespace Missing_Person.Controllers
                 return View("NotFound");
             }
 
+            var users = await userManager.Users.ToListAsync(); // Materialize the users into a list
+
             var model = new List<UserRoleViewModel>();
-            foreach (var user in userManager.Users)
+            foreach (var user in users)
             {
                 var userRoleViewModel = new UserRoleViewModel
                 {
@@ -99,6 +102,8 @@ namespace Missing_Person.Controllers
 
             return View(model);
         }
+
+        
         public IActionResult DeleteRole(string id)
         {
             var role = roleManager.FindByIdAsync(id).Result;

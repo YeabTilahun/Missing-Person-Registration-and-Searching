@@ -132,7 +132,6 @@ namespace Missing_Person.Controllers
             {
                 string imgPaths = "";
                 List<string> result = new List<string>();
-                string path = "C:\\Users\\Yeabsira\\Documents\\GitHub\\Missing-Person-Registration-and-Searching\\Missing-Person\\wwwroot\\";
                 string path2 = Path.Combine(webHostEnvironment.WebRootPath);
 
                 //save the image provided by the user in the folder Search
@@ -224,6 +223,12 @@ namespace Missing_Person.Controllers
                 }
             }
             return RedirectToAction("Privacy", "Home");
+        }
+        public IActionResult Delete(int id)
+        {
+           imissingPersonRepository.DeleteMissingPerson(id);
+            
+            return RedirectToAction("DisplayAll");
         }
 
     }
